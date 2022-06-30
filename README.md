@@ -8,7 +8,7 @@
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 - ✨
-<img align="right" src="https://github-readme-stats.vercel.app/api?username=WeiFengWa&show_icons=true&icon_color=CE1D2D&text_color=718096&bg_color=ffffff&hide_title=true" />
+<img align="left" src="https://github-readme-stats.vercel.app/api?username=WeiFengWa&show_icons=true&icon_color=CE1D2D&text_color=718096&bg_color=ffffff&hide_title=true" />
 
 ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=WeiFengWa&theme=vue&layout=compact&hide=Rich%20Text%20Format,CSS,HTML,VBA)
 

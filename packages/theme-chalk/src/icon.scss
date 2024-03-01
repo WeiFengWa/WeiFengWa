@@ -1,0 +1,7 @@
+@use 'mixins/mixins.scss' as *;
+
+@include b(icon) {
+  display: inline-flex;
+  vertical-align: middle;
+  background: red;
+}

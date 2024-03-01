@@ -1,0 +1,12 @@
+{
+  "name": "docs",
+  "scripts": {
+    "dev": "vitepress dev ."
+  },
+  "devDependencies": {
+    "vitepress": "1.0.0-rc.43"
+  },
+  "dependencies": {
+    "vitepress-demo-editor": "^3.2.1"
+  }
+}

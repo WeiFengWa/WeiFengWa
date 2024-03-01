@@ -1,0 +1,7 @@
+.component-box {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 14px;
+  gap: 14px;
+  flex-shrink: 0;
+}

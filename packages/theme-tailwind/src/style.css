@@ -1,0 +1,57 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:root {
+  --primary: #409eff;
+  --primary-light: #79bbff;
+  --primary-dark: #337ecc;
+  --primary-light-5: #a0cfff;
+
+  --success: #67c23a;
+  --success-dark: #529b2e;
+  --success-light: #95d475;
+  --success-light-5: #b3e19d;
+
+  --warning: #e6a23c;
+  --warning-dark: #b88230;
+  --warning-light: #eebe77;
+  --warning-light-5: #f3d19e;
+
+  --danger: #f56c6c;
+  --danger-dark: #c45656;
+  --danger-light: #f89898;
+  --danger-light-5: #fab6b6;
+
+  --info: #909399;
+  --info-dark: #73767a;
+  --info-light: #b1b3b8;
+  --info-light-5: #c8c9cc;
+
+  --primary-text: #303133;
+  --regular-text: #606266;
+  --secondary-text: #909399;
+  --placeholder-text: #a8abb2;
+  --disabled-text: #c0c4cc;
+
+  --darker-border: #cdd0d6;
+  --dark-border: #d4d7de;
+  --base-border: #dcdfe6;
+  --light-border: #e4e7ed;
+  --lighter-border: #ebeef5;
+
+  --darker-fill: #e6e8eb;
+  --dark-fill: #ebedf0;
+  --base-fill: #f0f2f5;
+  --light-fill: #f5f7fa;
+  --lighter-fill: #fafafa;
+  --extra-light-fill: #fafcff;
+  --blank-fill: #ffffff;
+
+  --base-black: #000000;
+  --base-white: #ffffff;
+  --transparent: transparent;
+  --page-background: #f2f3f5;
+  --base-background: #ffffff;
+  --overlay-background: #ffffff;
+}

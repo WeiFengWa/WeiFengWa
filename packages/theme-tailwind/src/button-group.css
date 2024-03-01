@@ -1,0 +1,15 @@
+.wf-button-group {
+  @apply inline-block align-middle;
+
+  & > .wf-button ~ .wf-button {
+    @apply ml-0 rounded-none border-l border-r border-solid;
+  }
+
+  & > :first-child {
+    @apply rounded-none rounded-l-[var(--button-radius)];
+  }
+
+  & > :last-child {
+    @apply !rounded-r-[var(--button-radius)] !border-none;
+  }
+}

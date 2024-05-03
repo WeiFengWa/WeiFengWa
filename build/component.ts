@@ -7,6 +7,8 @@ import typescript from 'rollup-plugin-typescript2'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import { OutputOptions, rollup } from 'rollup'
+import { terser } from 'rollup-plugin-terser' // 压缩js代码
+import cleanup from 'rollup-plugin-cleanup' // 去除无效代码
 
 import { Project, SourceFile } from 'ts-morph'
 import * as VueCompiler from '@vue/compiler-sfc'
@@ -18,9 +20,10 @@ import { pathRewriter, run } from './utils'
 const buildEachComponent = async () => {
   console.log('------------------buildEachComponent-------------------')
   // 打包每个组件
+  // 查找components下所有的组件目录 ["icon"]
   const files = sync('*', {
     cwd: componentRoot,
-    onlyDirectories: true
+    onlyDirectories: true // 只查找文件夹
   })
 
   // 分别把 components 文件夹下的组件,放到 dist/es/components 下 和 dist/lib/compmonents
@@ -30,8 +33,15 @@ const buildEachComponent = async () => {
 
     const config = {
       input,
-      plugins: [nodeResolve(), vue(), typescript(), commonjs()],
-      external: (id: string) => /^vue/.test(id) || /^@weifengwa/.test(id) // 排除引入包那些不需要打包
+      plugins: [
+        nodeResolve(),
+        vue({
+          preprocessStyles: false
+        }),
+        typescript(),
+        commonjs()
+      ],
+      external: (id: string) => /^vue/.test(id) || /^@weifengwa/.test(id) // 排除掉vue和@weifengwa的依赖
     }
 
     const bundle = await rollup(config)
@@ -39,11 +49,11 @@ const buildEachComponent = async () => {
     const options = Object.values(buildConfig).map(config => ({
       format: config.format,
       file: path.resolve(config.output.path, `components/${file}/index.js`),
-      paths: pathRewriter(config.output.name) // @yun => yun/es  yun/lib
+      paths: pathRewriter(config.output.name), // @weifengwa => weifengwa/es  yun/lib
 
       // 视情况，是否配置，否在会包报警告 Use `output.exports: "named"` to disable this warning
-      // name: "yun", // 全局的名字
-      // exports: "named" // 导出的名字用命名的方式导出 liraryTarget:"var"  var name = "xxx"
+      // name: 'weifengwa', // 全局的名字
+      exports: 'named' // 导出的名字用命名的方式导出 liraryTarget:"var"  var name = "xxx"
     }))
 
     await Promise.all(
@@ -117,7 +127,7 @@ const genTypes = async () => {
       await fs.mkdir(path.dirname(filepath), {
         recursive: true
       })
-      // @yun -> yun/es -> .d.ts 不用去 lib 下查找
+      // @weifengwa -> weifengwa/es -> .d.ts 不用去 lib 下查找
       await fs.writeFile(filepath, pathRewriter('es')(outputFile.getText()))
     })
     await Promise.all(tasks)
@@ -143,7 +153,11 @@ const buildComponentEntry = async () => {
   console.log('----------------buildComponentEntry--------------------')
   const config = {
     input: path.resolve(componentRoot, 'index.ts'),
-    plugins: [typescript()],
+    plugins: [
+      typescript(),
+      cleanup(),
+      terser({ compress: { drop_console: true } }) // 压缩js代码 及删除console
+    ],
     external: () => true
   }
 
@@ -153,10 +167,16 @@ const buildComponentEntry = async () => {
     Object.values(buildConfig)
       .map(config => ({
         format: config.format,
-        file: path.resolve(config.output.path, 'components/index.js')
+        file: path.resolve(config.output.path, 'components/index.js'),
+        exports: 'named'
       }))
       .map(config => bundle.write(config as OutputOptions))
   )
 }
 
-export const buildComponent = series(buildEachComponent, genTypes)
+export const buildComponent = series(
+  buildEachComponent,
+  genTypes,
+  copyTypes(),
+  buildComponentEntry
+)

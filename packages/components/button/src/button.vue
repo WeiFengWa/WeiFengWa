@@ -9,7 +9,9 @@
       bem.is('disabled', disabled || loadedState === 'loading')
     ]"
     :disabled="disabled || loadedState === 'loading'"
+    @click="handleClick"
   >
+    <!-- 前置插槽 -->
     <slot name="before">
       <wf-icon
         v-if="iconName"
@@ -17,12 +19,15 @@
         :name="iconName"
       />
     </slot>
+    <!-- link型按钮 -->
     <template v-if="type === buttonTypes[7] && link">
       <a :href="link" target="_blank" rel="noopener noreferrer">
         <slot></slot>
       </a>
     </template>
+    <!-- 默认按钮 -->
     <slot v-else></slot>
+    <!-- 后置插槽 -->
     <slot name="after">
       <wf-icon
         v-if="rightIcon"
@@ -36,7 +41,12 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { createNameSpace } from '@weifengwa/utils/bem'
-import { buttonLoadingTypes, buttonProps, buttonTypes } from './button'
+import {
+  buttonLoadingTypes,
+  buttonProps,
+  buttonTypes,
+  buttonEmits
+} from './button'
 
 defineOptions({
   name: 'WfButton'
@@ -45,8 +55,10 @@ defineOptions({
 const bem = createNameSpace('button')
 
 const props = defineProps(buttonProps)
+const emit = defineEmits(buttonEmits)
 
 const buttonType = computed(() => {
+  if (props.type) return props.type
   switch (props.loadingType) {
     case buttonLoadingTypes[1]:
       return buttonTypes[3]
@@ -75,6 +87,7 @@ const loadedState = computed(() => {
 })
 
 const iconName = computed(() => {
+  if (props.loading && !props.icon) return 'iconamoon:restart'
   switch (props.loadingType) {
     case buttonLoadingTypes[1]:
     case buttonLoadingTypes[3]:
@@ -85,5 +98,9 @@ const iconName = computed(() => {
       return props.icon
   }
 })
+
+const handleClick = (evt: MouseEvent) => {
+  console.log('handleClick')
+  emit('click', evt)
+}
 </script>
-./button./button

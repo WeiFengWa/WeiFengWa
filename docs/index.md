@@ -9,6 +9,11 @@ hero:
     - theme: brand
       text: 快速开始
       link: /guide/quickStart
+      type: primary
+    - theme: alt
+      text: 在 GitHub 上查看
+      link: https://github.com/WeiFengwa
+      type: secondary
 
 features:
   - icon: 🛠️
@@ -18,3 +23,10 @@ features:
     title: 组件库单元测试
     details: Vue3 组件库测试 ...
 ---
+
+### npm 发布
+
+```bash
+npm login --registry=https://registry.npmjs.org
+npm publish --registry=https://registry.npmjs.org
+```

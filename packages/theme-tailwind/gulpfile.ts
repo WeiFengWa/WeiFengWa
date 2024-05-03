@@ -1,42 +1,52 @@
-import { series, src, dest } from 'gulp'
-import tailwindcss from 'tailwindcss'
-import postcss from 'gulp-postcss'
-import rename from 'gulp-rename'
 import path from 'path'
-// import autoPrefixer from 'gulp-autoprefixer'
-import autoprefixer from 'autoprefixer'
-import gulpSass from 'gulp-sass'
-import sass from 'sass'
+import { series, src, dest } from 'gulp'
+
 import gulpCleanCss from 'gulp-clean-css'
+import nesting from 'tailwindcss/nesting'
+import tailwindcss from 'tailwindcss'
+import postcssImport from 'postcss-import'
+import postcss from 'gulp-postcss'
+import concat from 'gulp-concat'
+import autoprefixer from 'autoprefixer'
 import { run, withTaskName } from '../../build/utils'
+import { styleRoot } from '../../build/utils/paths'
 
 function r(p: string) {
   return path.resolve(__dirname, p)
 }
 
-// tailwindcss 到 scss
-function tailwindToScss(p: string) {
-  return src(r(p))
-    .pipe(postcss([tailwindcss('./tailwind.config.js'), autoprefixer()]))
-    .pipe(rename({ extname: '.scss' }))
-    .pipe(dest('./dist/scss'))
+// tailwindcss 到 css
+function tailwindToCss(p: string) {
+  console.log('---------------buildCss------------------------')
+  return src([r(p), '!' + r('./src/index.css')])
+    .pipe(
+      postcss([
+        postcssImport(),
+        nesting(),
+        tailwindcss('./tailwind.config.js'),
+        autoprefixer()
+      ])
+    )
+    .pipe(gulpCleanCss())
+    .pipe(dest('./dist'))
 }
 
-// scss 到 css
-function scssToCss(p: string) {
+// 合并所有css
+function mergeCss(p: string) {
   return src(r(p))
-    .pipe(gulpSass(sass).sync())
+    .pipe(concat('index.css'))
     .pipe(gulpCleanCss())
-    .pipe(dest('./dist/css'))
+    .pipe(dest('./dist'))
 }
 
 // 把编译好的 css 拷贝到根目录下 dist 中
-const copyFullStyle = () => {
-  return src(r('./dist/css/**')).pipe(dest(r('../../dist/theme')))
+const copyFullStyle = (p: string) => {
+  return src(r(p)).pipe(dest(r('../../dist/theme')))
 }
 
 export default series(
-  withTaskName('buildScss', () => tailwindToScss('./src/*.css')),
-  withTaskName('buildCss', () => scssToCss('./dist/scss/*.scss')),
-  withTaskName('copyCss', () => copyFullStyle())
+  withTaskName('cleanCss', () => run('rm -rf ./dist', styleRoot)),
+  withTaskName('buildCss', () => tailwindToCss('./src/*.css')),
+  withTaskName('mergeCss', () => mergeCss('./dist/*.css')),
+  withTaskName('copyCss', () => copyFullStyle('./dist/**'))
 )

@@ -5,7 +5,7 @@ import { ModuleKind, Project, ScriptTarget, SourceFile } from 'ts-morph'
 
 import { outDir, projectRoot, weifengRoot } from './utils/paths'
 import { parallel, series } from 'gulp'
-import { run, withTaskName } from './utils'
+import { run, withTaskName, pathRewriter } from './utils'
 import { buildConfig } from './utils/config'
 
 export const genEntryTypes = async () => {
@@ -52,7 +52,8 @@ export const genEntryTypes = async () => {
       await fs.mkdir(path.dirname(filepath), { recursive: true })
       await fs.writeFile(
         filepath,
-        outputFile.getText().replaceAll('@weifengwa', '.'),
+        // outputFile.getText().replaceAll('@weifengwa', '.'),
+        pathRewriter('es')(outputFile.getText()), // @weifengwa => weifengwa/es weifengwa/lib  处理路径
         'utf8'
       )
     }

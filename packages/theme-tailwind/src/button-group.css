@@ -1,15 +1,32 @@
 .wf-button-group {
-  @apply inline-block align-middle;
+  @apply inline-flex gap-[0px] items-center;
+
+  & > .wf-button {
+    @apply border-t-0 border-b-0  border-[var(--button-fill-light)];
+  }
 
   & > .wf-button ~ .wf-button {
-    @apply ml-0 rounded-none border-l border-r border-solid;
+    @apply rounded-none border-l-[0.6px] border-solid;
   }
 
   & > :first-child {
-    @apply rounded-none rounded-l-[var(--button-radius)];
+    @apply rounded-none rounded-l-[var(--button-radius)] border-l-0;
   }
 
   & > :last-child {
-    @apply !rounded-r-[var(--button-radius)] !border-none;
+    @apply !rounded-r-[var(--button-radius)] border-r-0;
+  }
+
+  &.is-circle .wf-button {
+    --button-radius: 99999px;
+    @apply h-[34px] px-3.5;
+  }
+
+  &.is-round .wf-button {
+    --button-radius: 99999px;
+  }
+
+  &.is-square .wf-button {
+    @apply p-2 size-[34px];
   }
 }

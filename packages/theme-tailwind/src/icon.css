@@ -1,7 +1,7 @@
 .wf-icon {
   @apply align-middle justify-center items-center inline-flex min-w-5 min-h-5 not-italic;
 
-  > svg {
+  & > svg {
     @apply w-full h-full;
   }
 }

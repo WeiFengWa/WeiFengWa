@@ -1,5 +1,12 @@
 <template>
-  <div :class="bem.b('group')">
+  <div
+    :class="[
+      bem.b('group'),
+      bem.is('circle', circle),
+      bem.is('round', round),
+      bem.is('square', square)
+    ]"
+  >
     <slot></slot>
   </div>
 </template>
@@ -12,6 +19,6 @@ defineOptions({
   name: 'WfButtonGroup'
 })
 
-defineProps(buttonGroupProps)
+const props = defineProps(buttonGroupProps)
 const bem = createNameSpace('button')
 </script>

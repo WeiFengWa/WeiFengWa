@@ -211,33 +211,53 @@ function startLoading() {
 
 ## 按钮组
 
-<wf-button-group>
-<wf-button type="primary" icon="iconamoon:player-start-duotone" square/>
-<wf-button type="primary" icon="iconamoon:player-play-duotone" square/>
-<wf-button type="primary" icon="iconamoon:player-end-duotone" square/>
-</wf-button-group>
+<div class="component-box">
+  <wf-button-group>
+    <wf-button type="primary" icon="iconamoon:player-start-duotone" square/>
+    <wf-button type="primary" icon="iconamoon:player-play-duotone" square disabled/>
+    <wf-button type="primary" icon="iconamoon:player-end-duotone" square/>
+  </wf-button-group>
+  <wf-button-group circle>
+    <wf-button icon="iconamoon:player-start-duotone" @click="test"/>
+    <wf-button loading />
+    <wf-button loading />
+    <wf-button icon="iconamoon:player-end-duotone"/>
+  </wf-button-group>
+</div>
 
 ```vue
 <template>
   <wf-button-group>
-    <wf-button type="success" icon="iconamoon:player-start-duotone" />
-    <wf-button type="success" icon="iconamoon:player-play-duotone" />
-    <wf-button type="success" icon="iconamoon:player-end-duotone" />
+    <wf-button type="primary" icon="iconamoon:player-start-duotone" square />
+    <wf-button type="primary" icon="iconamoon:player-play-duotone" square />
+    <wf-button type="primary" icon="iconamoon:player-end-duotone" square />
+  </wf-button-group>
+  <wf-button-group>
+    <wf-button type="primary" icon="iconamoon:player-start-duotone" square />
+    <wf-button type="primary" loading square />
+    <wf-button type="primary" icon="iconamoon:player-end-duotone" square />
   </wf-button-group>
 </template>
 ```
 
 ## API
 
-### Icon Props
+### Button Props
 
-| 名称  | 类型             | 默认值 | 说明     |
-| ----- | ---------------- | ------ | -------- |
-| type  | string           |        | 图标名称 |
-| color | string           |        | 图标颜色 |
-| size  | number \| string |        | 图标大小 |
+| 名称        | 类型                                                                            | 说明       |
+| ----------- | ------------------------------------------------------------------------------- | ---------- |
+| type        | `default` `primary` `success` `danger` `warning` `info` `text` `link` `dashed ` | 按钮类型   |
+| round       | boolean                                                                         | 是否弧形   |
+| circle      | boolean                                                                         | 是否圆形   |
+| square      | boolean                                                                         | 是否方形   |
+| disabled    | boolean                                                                         | 是否禁用   |
+| icon        | string                                                                          | 左图标     |
+| rightIcon   | string                                                                          | 右图标     |
+| link        | string                                                                          | 按钮链接   |
+| loading     | boolean                                                                         | 是否加载中 |
+| loadingType | `default` `loading` `success` `failure`                                         | 加载状态   |
 
-### Icon Slot
+### Slot
 
 | 名称    | 说明     |
 | ------- | -------- |
@@ -250,8 +270,14 @@ const loading = ref(false)
 
 function startLoading() {
   loading.value = true
+  console.log('开始加载')
   setTimeout(() => {
     loading.value = false
+    console.log('加载结束')
   }, 1500)
+}
+
+const test = () => {
+  console.log('test')
 }
 </script>

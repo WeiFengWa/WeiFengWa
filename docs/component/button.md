@@ -4,7 +4,7 @@
 
 支持 `default`、`primary`、`danger`、`success`、`warning`、`info`、 `text`、`link`、`dashed` 这好几种类型，默认为 `default`。
 
-<div class="component-box">
+<wf-space>
   <wf-button>Default</wf-button>
   <wf-button type="primary">Primary</wf-button>
   <wf-button type="danger">danger</wf-button>
@@ -14,7 +14,7 @@
   <wf-button type="text">Text</wf-button>
   <wf-button type="link" link="https://weifengwa.cn">Link</wf-button>
   <wf-button type="dashed">Dashed</wf-button>
-</div>
+</wf-space>
 
 ```vue
 <template>
@@ -34,7 +34,7 @@
 
 使用 `icon` or `rightIcon` 属性在按钮内嵌入一个图标。
 
-<div class="component-box">
+<wf-space>
   <wf-button type="primary" icon="iconamoon:check-circle-1" />
   <wf-button type="danger" icon="iconamoon:close-circle-1" />
   <wf-button type="success" icon="iconamoon:check-circle-1">
@@ -43,7 +43,7 @@
   <wf-button type="primary" right-icon="iconamoon:check-circle-1">
     当然，你也可以将图标放到右边
   </wf-button>
-</div>
+</wf-space>
 
 ```vue
 <template>
@@ -62,7 +62,7 @@
 
 共有 `default`、`round`、`circle`、`square` 四种形状，默认为 `default`。
 
-<div class="component-box">
+<wf-space>
   <wf-button type="primary">Default</wf-button>
   <wf-button type="primary" round>Round</wf-button>
   <wf-button type="success" circle>
@@ -73,7 +73,7 @@
   </wf-button>
   <wf-button type="danger" square> 但是呢 </wf-button>
   如果你的内容过多，效果正如你所见
-</div>
+</wf-space>
 
 ```vue
 <template>
@@ -94,12 +94,12 @@
 
 使用 `disabled` 属性禁用按钮
 
-<div class="component-box">
+<wf-space>
   <wf-button disabled>Default</wf-button>
   <wf-button type="danger" disabled circle>
     <wf-icon name="iconamoon:close-circle-1" />
   </wf-button>
-</div>
+</wf-space>
 
 ```vue
 <template>
@@ -116,8 +116,8 @@
 
 `loadingType` 属性有 `default`、`loading`、`success`、`failure` 四种状态，默认为 `default`
 
-<div class="component-box">
-  <div class="component-box">
+<wf-space>
+  <wf-space>
     <wf-button
       :type="loading ? 'warning' : 'success'"
       :icon="loading ? 'iconamoon:restart' : 'iconamoon:check-circle-1'"
@@ -131,14 +131,14 @@
     <wf-button type="success" icon="iconamoon:check-circle-1" :loading="false"
       >我加载完了</wf-button
     >
-  </div>
-  <div class="component-box">
+  </wf-space>
+  <wf-space>
     <wf-button type="success" loadingType="default">默认加载状态</wf-button>
     <wf-button type="success" loadingType="loading">加载中状态</wf-button>
     <wf-button type="success" loadingType="success">加载成功状态</wf-button>
     <wf-button type="success" loadingType="failure">加载失败状态</wf-button>
-  </div>
-</div>
+  </wf-space>
+</wf-space>
 
 ```vue
 <template>
@@ -211,7 +211,7 @@ function startLoading() {
 
 ## 按钮组
 
-<div class="component-box">
+<wf-space>
   <wf-button-group>
     <wf-button type="primary" icon="iconamoon:player-start-duotone" square/>
     <wf-button type="primary" icon="iconamoon:player-play-duotone" square disabled/>
@@ -223,7 +223,7 @@ function startLoading() {
     <wf-button loading />
     <wf-button icon="iconamoon:player-end-duotone"/>
   </wf-button-group>
-</div>
+</wf-space>
 
 ```vue
 <template>

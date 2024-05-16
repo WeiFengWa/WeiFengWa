@@ -9,4 +9,4 @@ export const weifengRoot = path.resolve(__dirname, '../../packages/weifengwa')
 // 组件目录
 export const componentRoot = path.resolve(projectRoot, 'packages/components')
 // 样式目录
-export const styleRoot = path.resolve(projectRoot, 'packages/theme-tailwind')
+export const styleRoot = path.resolve(projectRoot, 'packages/styles')

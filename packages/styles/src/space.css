@@ -1,0 +1,20 @@
+.wf-space {
+  --gap: 14px;
+  @apply flex w-full;
+
+  &__container {
+    @apply flex gap-[var(--gap)] w-full flex-wrap;
+
+    &.is-vertical {
+      @apply flex-col;
+    }
+
+    &.is-nowrap {
+      @apply flex-nowrap;
+    }
+
+    &.is-fill {
+      @apply flex-1;
+    }
+  }
+}

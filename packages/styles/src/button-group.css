@@ -19,7 +19,7 @@
 
   &.is-circle .wf-button {
     --button-radius: 99999px;
-    @apply h-[34px] px-3.5;
+    @apply h-[28px] px-3.5;
   }
 
   &.is-round .wf-button {
@@ -27,6 +27,6 @@
   }
 
   &.is-square .wf-button {
-    @apply p-2 size-[34px];
+    @apply p-2 size-[28px];
   }
 }

@@ -14,6 +14,7 @@
 <script setup lang="ts">
 import { createNameSpace } from '@weifengwa/utils/bem'
 import { buttonGroupProps } from './button-group'
+import '@weifengwa/styles/src/button-group.css'
 
 defineOptions({
   name: 'WfButtonGroup'

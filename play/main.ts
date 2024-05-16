@@ -1,12 +1,8 @@
 import { createApp } from 'vue'
 import App from './app.vue'
-import WfIcon from '@weifengwa/components/icon'
-import WfButton from '@weifengwa/components/button'
-import '@weifengwa/theme-tailwind/src/style.css'
-import '@weifengwa/theme-tailwind/src/button.css'
-
-const plugins = [WfIcon, WfButton]
+import weifengwa from '@weifengwa/components/index'
+import '@weifengwa/styles/src/index.css'
 
 const app = createApp(App)
-plugins.forEach(plugin => app.use(plugin))
+app.use(weifengwa)
 app.mount('#app')

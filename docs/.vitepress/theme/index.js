@@ -1,7 +1,7 @@
 import DefaultTheme from 'vitepress/theme'
 import '../../index.css'
 import weifengwa from '@weifengwa/components/index'
-import '@weifengwa/theme-tailwind/src/index.css'
+import '@weifengwa/styles/src/common.css'
 // import { vuePlugin } from 'vitepress-demo-editor'
 // import 'vitepress-demo-editor/dist/style.css'
 

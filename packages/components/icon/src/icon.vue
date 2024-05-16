@@ -11,6 +11,7 @@ import { Icon } from '@iconify/vue'
 import { computed } from 'vue'
 import { iconProps } from './icon'
 import { createNameSpace } from '@weifengwa/utils/bem'
+import '@weifengwa/styles/src/icon.css'
 
 defineOptions({
   name: 'WfIcon'

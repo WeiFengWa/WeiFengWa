@@ -11,6 +11,7 @@
     <wf-icon name="iconamoon:check-circle-1" :size="34" color="skyblue" />
     <wf-icon>✌️</wf-icon>
     <wf-button type="success">按钮</wf-button>
+    <wf-button type="success">按钮</wf-button>
   </div>
 </template>
 <script setup lang="ts"></script>

@@ -4,6 +4,12 @@ import { series, parallel } from 'gulp'
 import glob, { sync } from 'fast-glob'
 import vue from 'rollup-plugin-vue'
 import typescript from 'rollup-plugin-typescript2'
+import RollupPluginPostcss from 'rollup-plugin-postcss' // 解决组件内部如果有css 打包会报错的css插件
+import cssnano from 'cssnano'
+import Autoprefixer from 'autoprefixer'
+import tailwindcss from 'tailwindcss'
+import nesting from 'tailwindcss/nesting'
+import postcssImport from 'postcss-import'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import { OutputOptions, rollup } from 'rollup'
@@ -39,6 +45,16 @@ const buildEachComponent = async () => {
           preprocessStyles: false
         }),
         typescript(),
+        RollupPluginPostcss({
+          // extract: 'theme-chalk/components-style.css',
+          plugins: [
+            postcssImport(),
+            nesting(),
+            tailwindcss(),
+            Autoprefixer(),
+            cssnano()
+          ]
+        }),
         commonjs()
       ],
       external: (id: string) => /^vue/.test(id) || /^@weifengwa/.test(id) // 排除掉vue和@weifengwa的依赖

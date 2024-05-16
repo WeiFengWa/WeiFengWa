@@ -3,14 +3,15 @@
   "scripts": {
     "play": "pnpm -C play dev --port 8086 --open",
     "docs": "pnpm -C docs dev --port 8088 --open",
-    "build": "gulp -f build/gulpfile.ts"
+    "build": "gulp -f build/gulpfile.ts",
+    "publish:wf": "gulp -f build/publish.ts"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "dependencies": {
     "@weifengwa/components": "workspace:^",
-    "@weifengwa/theme-tailwind": "workspace:^",
+    "@weifengwa/styles": "workspace:^",
     "@weifengwa/utils": "workspace:^",
     "typescript": "^5.3.3",
     "vue": "^3.4.19"
@@ -40,8 +41,10 @@
     "gulp-typescript": "6.0.0-alpha.1",
     "postcss": "^8.4.35",
     "postcss-import": "^16.1.0",
+    "release-it": "^17.2.1",
     "rollup": "^4.12.0",
     "rollup-plugin-cleanup": "^3.2.1",
+    "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.36.0",
     "rollup-plugin-vue": "^6.0.0",

@@ -41,7 +41,7 @@ function mergeCss(p: string) {
 
 // 把编译好的 css 拷贝到根目录下 dist 中
 const copyFullStyle = (p: string) => {
-  return src(r(p)).pipe(dest(r('../../dist/theme')))
+  return src(r(p)).pipe(dest(r('../../dist/styles')))
 }
 
 export default series(

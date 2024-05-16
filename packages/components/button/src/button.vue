@@ -47,6 +47,7 @@ import {
   buttonTypes,
   buttonEmits
 } from './button'
+import '@weifengwa/styles/src/button.css'
 
 defineOptions({
   name: 'WfButton'

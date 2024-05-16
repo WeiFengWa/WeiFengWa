@@ -2,6 +2,9 @@ import path from 'path'
 import fs from 'fs/promises'
 import vue from 'rollup-plugin-vue'
 import typescript from 'rollup-plugin-typescript2'
+import RollupPluginPostcss from 'rollup-plugin-postcss' // 解决组件内部如果有css 打包会报错的css插件
+import cssnano from 'cssnano'
+import Autoprefixer from 'autoprefixer'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import { parallel } from 'gulp'
@@ -20,9 +23,13 @@ const buildFull = async () => {
     input: path.resolve(weifengRoot, 'index.ts'), // 打包入口
     plugins: [
       nodeResolve(),
-      typescript(),
       vue({
         preprocessStyles: false
+      }),
+      typescript(),
+      RollupPluginPostcss({
+        // extract: 'theme-chalk/components-style.css',
+        plugins: [Autoprefixer(), cssnano()]
       }),
       commonjs(),
       cleanup(),

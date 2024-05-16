@@ -29,7 +29,8 @@ module.exports = {
         text: '组件',
         items: [
           { text: '图标', link: '/component/icon' },
-          { text: '按钮', link: '/component/button' }
+          { text: '按钮', link: '/component/button' },
+          { text: '间距', link: '/component/space' }
         ]
       }
     ],

@@ -32,6 +32,7 @@ module.exports = {
           { text: '按钮', link: '/component/button' },
           { text: '间距', link: '/component/space' },
           { text: '滚动条', link: '/component/scroll' },
+          { text: '开关', link: '/component/switch' },
         ]
       }
     ],

@@ -1,7 +1,7 @@
 .wf-scroll {
   --hover: var(--primary-light);
   --active: var(--primary);
-  @apply relative overflow-hidden border;
+  @apply relative overflow-hidden;
 
   &__container {
     @apply w-full h-full overflow-hidden flex;

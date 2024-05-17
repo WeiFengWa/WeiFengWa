@@ -54,8 +54,8 @@ const status = reactive({
 const scrollStyle = computed(() => {
   let w = props.width?.toString() || '100%',
     h = props.height?.toString() || '300px'
-  if (!w.endsWith('px')) w = props.width + 'px'
-  if (!h.endsWith('px')) h = props.height + 'px'
+  if (typeof w === 'number') w = props.width + 'px'
+  if (typeof h === 'number') h = props.height + 'px'
   return {
     width: w,
     height: h

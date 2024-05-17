@@ -2,13 +2,19 @@
 
 ## 基本使用
 
-默认 `vertical` 滚动
+默认垂直滚动，添加 `horizontal` 属性即可水平滚动
 
-<wf-scroll>
-  <div style="height: 300px;width: 200px;background:red;">div1</div>
-  <div style="height: 300px;width: 300px;background:blue;">div2</div>
-  <div style="height: 300px;width: 200px;background:red;">div1</div>
-</wf-scroll>
+<wf-space vertical>
+  <wf-space align="center">
+    <wf-switch v-model="horizontal" />
+    {{ horizontal ? '水平' : '垂直' }}
+  </wf-space>
+  <wf-scroll :horizontal="horizontal">
+    <div style="height: 300px;width: 200px;background:red;">div1</div>
+    <div style="height: 300px;width: 300px;background:blue;">div2</div>
+    <div style="height: 300px;width: 500px;background:red;">div1</div>
+  </wf-scroll>
+</wf-space>
 
 ```vue
 <template>
@@ -16,28 +22,6 @@
     <div style="height: 300px;width: 200px;background:red;">div1</div>
     <div style="height: 300px;width: 300px;background:blue;">div2</div>
     <div style="height: 300px;width: 200px;background:red;">div1</div>
-  </wf-scroll>
-</template>
-```
-
-## 水平滚动
-
-`horizontal` 属性
-
-<wf-scroll horizontal>
-  <div style="height: 150px;width: 200px;background:red;">div1</div>
-  <div style="height: 250px;width: 300px;background:blue;">div2</div>
-  <div style="height: 150px;width: 100px;background:red;">div3</div>
-  <div style="height: 50px;width: 2000px;background:green;">div3</div>
-</wf-scroll>
-
-```vue
-<template>
-  <wf-scroll horizontal>
-    <div style="height: 150px;width: 200px;background:red;">div1</div>
-    <div style="height: 250px;width: 300px;background:blue;">div2</div>
-    <div style="height: 150px;width: 100px;background:red;">div3</div>
-    <div style="height: 50px;width: 2000px;background:green;">div3</div>
   </wf-scroll>
 </template>
 ```
@@ -84,3 +68,8 @@
 | 名称    | 说明     |
 | ------- | -------- |
 | default | 默认内容 |
+
+<script setup lang="ts">
+import { ref } from 'vue'
+const horizontal = ref(false)
+</script>

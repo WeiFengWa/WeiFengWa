@@ -1,14 +1,15 @@
 <template>
-  <div :class="[bem.b()]" :style="style">
-    <div
-      :class="[
-        bem.e('container'),
-        bem.is('vertical', props.vertical),
-        bem.is('nowrap', props.nowrap),
-        bem.is('fill', props.fill),
-        bem.m(props.align)
-      ]"
-    >
+  <div
+    :class="[
+      bem.b(),
+      bem.is('vertical', props.vertical),
+      bem.is('nowrap', props.nowrap),
+      bem.is('fill', props.fill),
+      bem.m(props.align)
+    ]"
+    :style="style"
+  >
+    <div :class="[bem.e('container')]">
       <slot></slot>
     </div>
   </div>

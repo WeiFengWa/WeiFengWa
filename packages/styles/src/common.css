@@ -55,3 +55,7 @@
   --base-background: #ffffff;
   --overlay-background: #ffffff;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}

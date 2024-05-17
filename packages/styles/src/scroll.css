@@ -1,0 +1,70 @@
+.wf-scroll {
+  --hover: var(--primary-light);
+  --active: var(--primary);
+  @apply relative overflow-hidden border;
+
+  &__container {
+    @apply w-full h-full overflow-hidden flex;
+  }
+
+  &__content {
+    @apply flex;
+  }
+
+  &__track {
+    @apply absolute cursor-pointer;
+  }
+
+  &:hover &__thumb {
+    @apply bg-[var(--hover)];
+  }
+
+  &__track:active &__thumb {
+    @apply bg-[var(--active)];
+  }
+
+  &__thumb {
+    @apply opacity-55 w-1 rounded duration-300 transition-colors cursor-pointer;
+
+    &:active,
+    &:hover {
+      @apply bg-[var(--active)];
+    }
+  }
+
+  &.is-vertical > &__container {
+    @apply flex-col overflow-y-auto;
+  }
+
+  &.is-vertical > &__container > &__content {
+    @apply w-full flex-col;
+  }
+
+  &.is-horizontal > &__container {
+    @apply flex-row overflow-x-auto;
+  }
+
+  &.is-horizontal > &__container > &__content {
+    @apply h-full;
+  }
+
+  &.is-hidden > &__track {
+    @apply hidden;
+  }
+
+  &.is-vertical > &__track {
+    @apply h-full w-1 right-0 top-0 pr-[1px];
+  }
+
+  &.is-vertical > &__track > &__thumb {
+    @apply h-1 w-full;
+  }
+
+  &.is-horizontal > &__track {
+    @apply h-1 w-full bottom-0 left-0 pb-[1px];
+  }
+
+  &.is-horizontal > &__track > &__thumb {
+    @apply h-full w-1;
+  }
+}

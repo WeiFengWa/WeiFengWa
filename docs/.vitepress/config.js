@@ -30,7 +30,8 @@ module.exports = {
         items: [
           { text: '图标', link: '/component/icon' },
           { text: '按钮', link: '/component/button' },
-          { text: '间距', link: '/component/space' }
+          { text: '间距', link: '/component/space' },
+          { text: '滚动条', link: '/component/scroll' },
         ]
       }
     ],

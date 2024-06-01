@@ -1,18 +1,21 @@
 .wf-switch {
+  --checked-color: var(--primary);
+  --unchecked-color: var(--info-light-5);
+  --dot-color: var(--base-white);
   @apply p-[2px] relative inline-flex items-center w-10 h-5 
-  bg-[var(--info-light-5)] duration-300 rounded-full;
+  bg-[var(--unchecked-color)] duration-300 rounded-full;
 
   &__dot {
     @apply absolute inline-block w-4 h-4 rounded-full
-     bg-white animate-[.4s_forwards_ease-in];
+     bg-[var(--dot-color)] animate-[.4s_forwards_ease-in];
   }
 
   &.is-checked {
-    @apply bg-[var(--primary)];
+    @apply bg-[var(--checked-color)];
   }
 
   &.is-checked > &__dot {
-    @apply bg-white;
+    @apply bg-[var(--dot-color)];
   }
 
   &.is-disabled {

@@ -14,32 +14,72 @@ import { ref } from 'vue'
 
 const value = ref(false)
 
-const handleChange = (val: boolean) => {
+const handleChange = (val: string | boolean | number) => {
   console.log(val)
 }
 </script>
 ```
 
-## API
+## 自定义颜色
 
-### Switch Props
+<wf-switch dot-color="black" checked-color="red" unchecked-color="green" />
 
-| 名称     | 类型    | 说明     | 默认  |
-| -------- | ------- | -------- | ----- |
-| disabled | boolean | 是否禁用 | false |
+```vue
+<template>
+  <wf-switch dot-color="black" checked-color="red" unchecked-color="green" />
+</template>
+```
 
-### Switch Events
+## 自定义值
 
-| 名称   | 说明     | 类型              |
-| ------ | -------- | ----------------- |
-| change | 改变事件 | Function(boolean) |
+<wf-switch v-model="value" checked-value="开" unchecked-value="关" @change="handleChange"/>
+
+```vue
+<template>
+  <wf-switch
+    v-model="value"
+    checked-value="开"
+    unchecked-value="关"
+    @change="handleChange"
+  />
+</template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 
 const value = ref(false)
 
-const handleChange = (val: boolean) => {
+const handleChange = (val: string | boolean | number) => {
   console.log(val)
 }
 </script>
+```
+
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const value = ref(false)
+
+const handleChange = (val: string | boolean | number) => {
+  console.log(val)
+}
+</script>
+
+## API
+
+### Switch Props
+
+| 名称           | 类型                        | 说明             | 默认  |
+| -------------- | --------------------------- | ---------------- | ----- |
+| disabled       | boolean                     | 是否禁用         | false |
+| checkedColor   | string                      | 选中时背景颜色   |       |
+| uncheckedColor | string                      | 未选中时背景颜色 |       |
+| dotColor       | string                      | 圆点背景颜色     |       |
+| checkedValue   | string \| boolean \| number | 选中时值         |       |
+| uncheckedValue | string \| boolean \| number | 未选中时值       |       |
+
+### Switch Events
+
+| 名称   | 说明     | 参数                               |
+| ------ | -------- | ---------------------------------- |
+| change | 改变事件 | (string \| boolean \| number):void |

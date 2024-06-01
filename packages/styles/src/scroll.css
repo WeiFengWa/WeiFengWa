@@ -1,5 +1,5 @@
 .wf-scroll {
-  --hover: var(--primary-light);
+  --hover: var(--info);
   --active: var(--primary);
   @apply relative overflow-hidden;
 
@@ -24,7 +24,7 @@
   }
 
   &__thumb {
-    @apply opacity-55 w-1 rounded duration-300 transition-colors cursor-pointer;
+    @apply opacity-80 w-1 rounded duration-300 transition-colors cursor-pointer;
 
     &:active,
     &:hover {
@@ -53,7 +53,7 @@
   }
 
   &.is-vertical > &__track {
-    @apply h-full w-1 right-0 top-0 pr-[1px];
+    @apply h-full w-[6px] right-0 top-0 pr-[1px];
   }
 
   &.is-vertical > &__track > &__thumb {
@@ -61,7 +61,7 @@
   }
 
   &.is-horizontal > &__track {
-    @apply h-1 w-full bottom-0 left-0 pb-[1px];
+    @apply h-[6px] w-full bottom-0 left-0 pb-[1px];
   }
 
   &.is-horizontal > &__track > &__thumb {

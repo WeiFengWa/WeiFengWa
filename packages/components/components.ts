@@ -4,6 +4,7 @@ import { WfButton, WfButtonGroup } from './button'
 import { WfSpace } from './space'
 import { WfScroll } from './scroll'
 import { WfSwitch } from './switch'
+import { WfDialog } from './dialog'
 
 export default [
   WfIcon,
@@ -11,7 +12,16 @@ export default [
   WfButtonGroup,
   WfSpace,
   WfScroll,
-  WfSwitch
+  WfSwitch,
+  WfDialog
 ] as Plugin[]
 
-export { WfIcon, WfButton, WfButtonGroup, WfSpace, WfScroll, WfSwitch }
+export {
+  WfIcon,
+  WfButton,
+  WfButtonGroup,
+  WfSpace,
+  WfScroll,
+  WfSwitch,
+  WfDialog
+}

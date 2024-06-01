@@ -33,6 +33,7 @@ module.exports = {
           { text: '间距', link: '/component/space' },
           { text: '滚动条', link: '/component/scroll' },
           { text: '开关', link: '/component/switch' },
+          { text: '弹窗', link: '/component/dialog' },
         ]
       }
     ],

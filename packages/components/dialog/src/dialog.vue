@@ -2,7 +2,7 @@
   <Teleport :to="props.appendTo || 'body'">
     <Transition name="dialog-fade">
       <div v-if="open" :class="[bem.b()]" @click="maskHandler">
-        <div :class="bem.e('container')">
+        <div :class="bem.e('container')" @click.stop>
           <slot name="header">
             <div v-if="title" :class="bem.e('header')">{{ title }}</div>
           </slot>

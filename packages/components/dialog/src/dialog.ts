@@ -3,8 +3,12 @@ import { ExtractPropTypes } from 'vue'
 export const dialogProps = {
   title: String,
   width: String || Number,
-  appendTo: String
-}
+  appendTo: String,
+  maskClosable: {
+    type: Boolean,
+    default: true
+  }
+} as const
 
 export const dialogEmits = {
   open: () => true,

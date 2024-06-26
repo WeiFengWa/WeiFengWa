@@ -3,7 +3,7 @@
 ## 基本使用
 
 <wf-switch v-model="open1"/>
-<wf-dialog v-model="open1"></wf-dialog>
+<wf-dialog v-model="open1" title="我是标题" @open="onOpen" @close="onClose"></wf-dialog>
 
 ## 自定义内容
 
@@ -23,4 +23,11 @@ import { ref } from 'vue';
 
 const open1 = ref(false);
 const open2 = ref(false);
+
+const onOpen = () => {
+  console.log('open');
+}
+const onClose = () => {
+  console.log('close');
+}
 </script>

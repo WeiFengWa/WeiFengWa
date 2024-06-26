@@ -101,7 +101,6 @@ const iconName = computed(() => {
 })
 
 const handleClick = (evt: MouseEvent) => {
-  console.log('handleClick')
   emit('click', evt)
 }
 </script>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    * {
+
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #101010;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container div {
+      position: absolute;
+      width: calc(40vmin - var(--i) * 5vmin);
+      height: calc(40vmin - var(--i) * 5vmin);
+      filter: hue-rotate(calc((var(--i) + 1) * 15deg));
+      box-shadow: 0 0 1vmin 0 #3884ff45, -0.25vmin 0.25vmin 1vmin 0 #000b;
+      background: #3884ff45;
+      animation: move 2s ease-in-out infinite alternate;
+      animation-delay: calc(var(--i) * 0.07s);
+    }
+
+    .container div:nth-child(12) {
+      filter: hue-rotate(calc((var(--i) + 1) * 15deg)) brightness(1.5);
+    }
+
+    .container div:nth-child(13) {
+      filter: hue-rotate(calc((var(--i) + 1) * 15deg)) brightness(2);
+      box-shadow: 0 0 1vmin 0 #3884ff45, -0.25vmin 0.25vmin 1vmin 0 #000b,
+        0 0 6vmin 0 #fffc inset;
+    }
+
+    @keyframes move {
+      0% {
+        border-radius: 0%;
+        transform: rotate(-90deg);
+      }
+
+      100% {
+        border-radius: 50%;
+        transform: rotate(90deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div style="--i: 0"></div>
+    <div style="--i: 1"></div>
+    <div style="--i: 2"></div>
+    <div style="--i: 3"></div>
+    <div style="--i: 4"></div>
+    <div style="--i: 5"></div>
+    <div style="--i: 6"></div>
+    <div style="--i: 7"></div>
+    <div style="--i: 8"></div>
+    <div style="--i: 9"></div>
+    <div style="--i: 10"></div>
+    <div style="--i: 11"></div>
+    <div style="--i: 12"></div>
+  </div>
+</body>
+
+</html>

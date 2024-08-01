@@ -1,4 +1,5 @@
-import { makeInstaller } from '@weifengwa/utils/mark-installer'
+import { makeInstaller } from './mark-installer'
 import Components from './components'
+import Plugins from './plugins'
 
-export default makeInstaller([...Components])
+export default makeInstaller([...Components, ...Plugins])

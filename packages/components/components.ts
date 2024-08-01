@@ -5,6 +5,7 @@ import { WfSpace } from './space'
 import { WfScroll } from './scroll'
 import { WfSwitch } from './switch'
 import { WfDialog } from './dialog'
+import { WfCollapseTransition } from './collapse-transition'
 
 export default [
   WfIcon,
@@ -13,15 +14,17 @@ export default [
   WfSpace,
   WfScroll,
   WfSwitch,
-  WfDialog
+  WfDialog,
+  WfCollapseTransition
 ] as Plugin[]
 
-export {
-  WfIcon,
-  WfButton,
-  WfButtonGroup,
-  WfSpace,
-  WfScroll,
-  WfSwitch,
-  WfDialog
-}
+// export {
+//   WfIcon,
+//   WfButton,
+//   WfButtonGroup,
+//   WfSpace,
+//   WfScroll,
+//   WfSwitch,
+//   WfDialog,
+//   WfCollapseTransition
+// }

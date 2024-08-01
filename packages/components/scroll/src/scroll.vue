@@ -10,7 +10,7 @@
   >
     <div ref="containerRef" :class="bem.e('container')" @scroll="handleScroll">
       <div ref="contentRef" :class="bem.e('content')">
-        <slot />
+        <slot></slot>
       </div>
     </div>
     <div ref="trackRef" :class="bem.e('track')" @mousedown="clickTrackHandler">
@@ -28,7 +28,7 @@
 import { createNameSpace } from '@weifengwa/utils/bem'
 import { scrollEmits, scrollProps } from './scroll'
 import '@weifengwa/styles/src/scroll.css'
-import { computed, reactive, ref } from 'vue'
+import { computed, reactive, ref, watch } from 'vue'
 
 defineOptions({
   name: 'WfScroll'
@@ -42,6 +42,15 @@ const containerRef = ref<HTMLDivElement>()
 const contentRef = ref<HTMLDivElement>()
 const trackRef = ref<HTMLDivElement>()
 const thumbRef = ref<HTMLDivElement>()
+const thumbStyle = ref()
+const contentWH = ref(0)
+
+watch(
+  () => contentWH.value,
+  v => {
+    thumbStyle.value = buildThumbStyle()
+  }
+)
 
 const status = reactive({
   top: 0,
@@ -62,35 +71,54 @@ const scrollStyle = computed(() => {
   }
 })
 
-const thumbStyle = computed(() => {
+const buildThumbStyle = () => {
   if (props.horizontal)
     return {
-      width: thumbWidth.value + 'px'
+      width: thumbWidth() + 'px'
     }
   return {
-    height: thumbHeight.value + 'px'
+    height: thumbHeight() + 'px'
   }
-})
+}
 
-const thumbHeight = computed(() => {
+const thumbHeight = () => {
   if (!containerRef.value || !contentRef.value) return 0
+  if (contentWH.value === 0 && contentRef.value.clientHeight === 0) {
+    contentWH.value = containerRef.value.clientHeight
+    contentRef.value.style.height = contentWH.value + 'px'
+  } else if (contentWH.value === 0) {
+    contentWH.value = contentRef.value.clientHeight
+  } else {
+    contentRef.value.style.height = contentWH.value + 'px'
+  }
+  if (containerRef.value.clientHeight > contentRef.value.clientHeight) return 0
   const h =
     props.min ||
     50 * (1 + containerRef.value!.clientHeight / contentRef.value!.clientHeight)
   return h > (props.max || 100) ? props.max : h
-})
+}
 
-const thumbWidth = computed(() => {
+const thumbWidth = () => {
   if (!containerRef.value || !contentRef.value) return 0
+  if (contentWH.value === 0 && contentRef.value.clientWidth === 0) {
+    contentWH.value = containerRef.value.clientWidth
+    contentRef.value.style.width = contentWH.value + 'px'
+  } else if (contentWH.value === 0) {
+    contentWH.value = contentRef.value.clientWidth
+  } else {
+    contentRef.value.style.width = contentWH.value + 'px'
+  }
+  if (containerRef.value.clientWidth > contentRef.value.clientWidth) return 0
   const w =
     props.min ||
     50 * (1 + containerRef.value!.clientWidth / contentRef.value!.clientWidth)
   return w > (props.max || 100) ? props.max : w
-})
+}
 
 // 监听滚动事件
 const handleScroll = () => {
   if (contentRef.value && thumbRef.value && containerRef.value) {
+    // console.log(containerRef.value.scrollTop)
     emit('scroll', {
       top: containerRef.value.scrollTop,
       left: containerRef.value.scrollLeft
@@ -144,6 +172,12 @@ const scrollTo = ({ left, top }: { left: number; top: number }) => {
   }
 }
 
+const setContentWH = (val: number) => {
+  if (contentRef.value) {
+    contentWH.value = val
+  }
+}
+
 const clickThumbHandler = (e: MouseEvent) => {
   e.stopPropagation()
   status.dragging = true
@@ -185,6 +219,7 @@ const mouseUpHandler = () => {
 }
 
 defineExpose({
-  scrollTo
+  scrollTo,
+  setContentWH
 })
 </script>

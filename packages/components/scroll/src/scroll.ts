@@ -1,8 +1,8 @@
 import { ExtractPropTypes } from 'vue'
 
 export const scrollProps = {
-  width: Number || String,
-  height: Number || String,
+  width: [Number, String],
+  height: [Number, String],
   hidden: Boolean,
   max: Number,
   min: Number,

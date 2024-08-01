@@ -5,8 +5,11 @@ export const switchProps = {
   checkedColor: String,
   uncheckedColor: String,
   dotColor: String,
-  checkedValue: String || Number || Boolean,
-  uncheckedValue: String || Number || Boolean
+  checkedValue: [String, Number, Boolean],
+  uncheckedValue: [String, Number, Boolean],
+  checkedLabel: String,
+  uncheckedLabel: String,
+  showLabel: Boolean
 }
 
 export const switchEmits = {

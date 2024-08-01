@@ -1,16 +1,24 @@
 <template>
-  <button
+  <div
     :class="[
       bem.b(),
       bem.is('checked', open),
-      bem.is('disabled', props.disabled)
+      bem.is('disabled', props.disabled),
+      bem.is('showLabel', props.showLabel)
     ]"
     :style="switchStyle"
-    :disabled="props.disabled"
-    @click="handleClick"
   >
-    <span ref="dotRef" :class="bem.e('dot')"></span>
-  </button>
+    <span v-if="props.showLabel" :class="bem.e('label')">
+      {{ open ? props.checkedLabel : props.uncheckedLabel }}
+    </span>
+    <button
+      :class="bem.e('button')"
+      :disabled="props.disabled"
+      @click="handleClick"
+    >
+      <span ref="dotRef" :class="bem.e('dot')"></span>
+    </button>
+  </div>
 </template>
 
 <script setup lang="ts">

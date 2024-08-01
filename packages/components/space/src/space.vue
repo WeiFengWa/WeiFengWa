@@ -27,7 +27,7 @@ defineOptions({
 const bem = createNameSpace('space')
 const props = defineProps(spaceProps)
 const style = computed(() => {
-  if (!props.gap) return {}
+  if (!props.gap && props.gap !== 0) return {}
   return {
     '--gap': props.gap.toString().endsWith('px') ? props.gap : props.gap + 'px'
   }

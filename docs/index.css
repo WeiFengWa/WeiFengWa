@@ -1,7 +1,26 @@
-.component-box {
-  display: flex;
-  flex-wrap: wrap;
-  row-gap: 14px;
-  gap: 14px;
-  flex-shrink: 0;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
+/* 
+.source-fade-enter-from {
+  opacity: 0;
+  transform: translateY(-60px) scale(0.75);
+}
+
+.source-fade-leave-to {
+  opacity: 0;
+  transform: translateY(60px) scale(0.75);
+}
+
+.source-fade-enter-to,
+.source-fade-leave-from {
+  opacity: 100;
+  transform: translateY(0) scale(1);
+}
+
+.source-fade-enter-active,
+.source-fade-leave-active {
+  transition: all var(--duration);
+} */

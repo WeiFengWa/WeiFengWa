@@ -10,21 +10,9 @@ pnpm install --save-dev @iconify/vue
 
 - 如果你想像用例一样直接使用，你需要全局注册组件，才能够直接在项目里使用。
 
-<wf-icon name="iconamoon:certificate-badge-duotone"/>
-<wf-icon name="iconamoon:certificate-badge-duotone" color="red"/>
-<wf-icon name="iconamoon:check-circle-1" />
-<wf-icon name="iconamoon:check-circle-1" :size="40" color="skyblue" />
-<wf-icon size="40">✌️</wf-icon>
-
-```vue
-<template>
-  <wf-icon name="iconamoon:certificate-badge-duotone" />
-  <wf-icon name="iconamoon:certificate-badge-duotone" color="red" />
-  <wf-icon name="iconamoon:check-circle-1" />
-  <wf-icon name="iconamoon:check-circle-1" :size="40" color="skyblue" />
-  <wf-icon size="40">✌️</wf-icon>
-</template>
-```
+:::demo
+icon/basic
+:::
 
 ## API
 

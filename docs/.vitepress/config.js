@@ -1,4 +1,4 @@
-import markdownPlugin from 'vitepress-demo-editor/markdownPlugin'
+import { mdPlugin } from './plugins'
 module.exports = {
   title: 'WeiFengwa',
   description: 'Vue3 组件库',
@@ -34,6 +34,7 @@ module.exports = {
           { text: '滚动条', link: '/component/scroll' },
           { text: '开关', link: '/component/switch' },
           { text: '弹窗', link: '/component/dialog' },
+          { text: '消息', link: '/component/message' },
         ]
       }
     ],
@@ -43,9 +44,7 @@ module.exports = {
   },
   markdown: {
     lineNumbers: true,
-    config: md => {
-      md.use(markdownPlugin)
-    }
+    config: (md) => mdPlugin(md)
   },
   search: {
     provider: 'local'

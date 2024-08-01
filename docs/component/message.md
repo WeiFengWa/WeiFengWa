@@ -1,15 +1,15 @@
-# Switch 开关
+# Message 消息
 
 ## 基本使用
 
 :::demo
-switch/basic
+message/basic
 :::
 
-## 自定义颜色
+## 通知类型
 
 :::demo
-switch/color
+message/notification
 :::
 
 ## 自定义 `label` 和 `value`

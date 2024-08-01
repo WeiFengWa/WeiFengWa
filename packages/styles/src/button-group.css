@@ -1,8 +1,16 @@
 .wf-button-group {
   @apply inline-flex gap-[0px] items-center;
 
+  & ~ .wf-button-group {
+    @apply ml-2;
+  }
+
   & > .wf-button {
     @apply border-t-0 border-b-0  border-[var(--button-fill-light)];
+  }
+
+  & > .wf-button ~ .wf-button {
+    @apply ml-0;
   }
 
   & > .wf-button ~ .wf-button {

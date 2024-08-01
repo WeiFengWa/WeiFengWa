@@ -2,15 +2,18 @@
   --checked-color: var(--primary);
   --unchecked-color: var(--info-light-5);
   --dot-color: var(--base-white);
-  @apply p-[2px] relative inline-flex items-center w-10 h-5 
-  bg-[var(--unchecked-color)] duration-300 rounded-full;
+  @apply inline-flex items-center gap-3.5;
+
+  &__button {
+    @apply p-[2px] relative inline-flex items-center w-10 h-5 bg-[var(--unchecked-color)] duration-300 rounded-full;
+  }
 
   &__dot {
     @apply absolute inline-block w-4 h-4 rounded-full
      bg-[var(--dot-color)] animate-[.4s_forwards_ease-in];
   }
 
-  &.is-checked {
+  &.is-checked > &__button {
     @apply bg-[var(--checked-color)];
   }
 
@@ -18,8 +21,12 @@
     @apply bg-[var(--dot-color)];
   }
 
-  &.is-disabled {
+  &.is-disabled > &__button {
     @apply cursor-not-allowed opacity-80;
+  }
+
+  &.is-showLabel {
+    @apply flex items-center justify-between;
   }
 }
 

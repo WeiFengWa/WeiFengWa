@@ -1,0 +1,71 @@
+.wf-message {
+  --duration: 0.5s;
+  --text: var(--base-white);
+  --fill: var(--primary);
+  --text-light: var(--base-white-light);
+  @apply fixed top-5 z-[999999] left-[50%] -translate-x-[50%] flex
+    p-3.5 bg-[var(--fill)] px-3.5 py-1.5 rounded-md shadow border
+    text-[var(--text)] gap-[7px] max-w-[30%] items-center;
+
+  &.is-notification {
+    @apply items-start shadow-lg p-3.5 rounded-lg max-w-[200px] right-3.5 left-auto translate-x-0;
+  }
+
+  &__icon {
+    /* @apply ; */
+  }
+
+  &.is-notification &__icon {
+    @apply size-8;
+  }
+
+  &__close {
+    @apply size-6 hover:text-[var(--text-light)] cursor-pointer;
+  }
+
+  &__content {
+    @apply flex flex-col justify-center self-center gap-[7px];
+  }
+
+  &__title {
+    @apply font-semibold;
+  }
+
+  &__message {
+    @apply text-sm;
+  }
+
+  &--error {
+    --fill: var(--danger);
+  }
+
+  &--success {
+    --fill: var(--success);
+  }
+
+  &--warning {
+    --fill: var(--warning);
+  }
+
+  &--info {
+    --fill: var(--info);
+  }
+}
+
+.message-fade-enter-from {
+  @apply opacity-0 -translate-y-60;
+}
+
+.message-fade-leave-to {
+  @apply opacity-0 -translate-y-60;
+}
+
+.message-fade-enter-to,
+.message-fade-leave-from {
+  @apply opacity-100 translate-y-0;
+}
+
+.message-fade-enter-active,
+.message-fade-leave-active {
+  @apply duration-[var(--duration)];
+}

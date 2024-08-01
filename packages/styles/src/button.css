@@ -5,6 +5,10 @@
   --button-fill-light: var(--primary-light);
   --button-radius: 4px;
 
+  & ~ .wf-button {
+    @apply ml-2;
+  }
+
   @apply rounded-[var(--button-radius)] py-1.5 px-3.5 text-[var(--button-text)] bg-[var(--button-fill)] text-xs
   inline-flex items-center gap-1 justify-center min-h-[20px] min-w-[20px] align-middle;
 

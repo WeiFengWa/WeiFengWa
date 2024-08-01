@@ -1,0 +1,14 @@
+/* .wf-collapse-transition-enter-from,
+.wf-collapse-transition-leave-to {
+  @apply opacity-0;
+}
+
+.wf-collapse-transition-enter-to,
+.wf-collapse-transition-leave-from {
+  @apply opacity-100;
+} */
+
+.wf-collapse-transition-enter-active,
+.wf-collapse-transition-leave-active {
+  @apply duration-500;
+}

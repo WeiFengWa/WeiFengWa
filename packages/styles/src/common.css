@@ -50,6 +50,7 @@
 
   --base-black: #000000;
   --base-white: #ffffff;
+  --base-white-light: #ececec;
   --transparent: transparent;
   --page-background: #f2f3f5;
   --base-background: #ffffff;
@@ -58,4 +59,28 @@
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+.wf-fade-enter-from,
+.wf-fade-leave-to {
+  @apply opacity-0;
+}
+
+.wf-fade-enter-to,
+.wf-fade-leave-from {
+  @apply opacity-100;
+}
+
+.wf-fade-enter-active,
+.wf-fade-leave-active {
+  @apply duration-300 overflow-hidden;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin {
+  animation: spin 1s linear infinite;
 }

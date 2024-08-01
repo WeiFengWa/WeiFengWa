@@ -1,9 +1,9 @@
 .wf-space {
-  --gap: 14px;
+  --gap: 7px;
   @apply flex w-full;
 
   &__container {
-    @apply flex gap-[var(--gap)] w-full flex-wrap;
+    @apply flex gap-[var(--gap)] w-full flex-wrap items-center;
   }
 
   &.is-vertical > &__container {
@@ -19,14 +19,18 @@
   }
 
   &--center > &__container {
-    @apply items-center;
+    @apply justify-center;
   }
 
   &--start > &__container {
-    @apply items-start;
+    @apply justify-start;
   }
 
   &--end > &__container {
-    @apply items-end;
+    @apply justify-end;
+  }
+
+  & .wf-button {
+    @apply !ml-0;
   }
 }

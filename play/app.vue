@@ -18,28 +18,26 @@
         <wf-icon name="iconamoon:check-circle-1" />
         <wf-icon name="iconamoon:check-circle-1" :size="34" color="skyblue" />
         <wf-icon>✌️</wf-icon>
-        <wf-button type="success">按钮</wf-button>
+        <wf-button type="success" loading>按钮</wf-button>
         <wf-button type="primary">按钮</wf-button>
         <wf-switch v-model="openDialog" />
       </wf-space>
     </wf-scroll>
   </wf-space> -->
-  <Waterfall>
-    <div v-for="item in 50" :key="item" class="waterfall-item">
-      <span class="waterfall-header"> Title </span>
+  <Waterfall ref="waterfallRef">
+    <div v-for="(item, index) in 30" :key="item" class="waterfall-item">
+      <span class="waterfall-header">{{ index }}</span>
       <div style="display: flex; flex-direction: column">
         <div>
           <!-- <img
             class="waterfall-img"
-            :src="`https://api.usuuu.com/img/random?${item}`"
+            :data-src="`https://api.usuuu.com/img/random?${item}`"
           /> -->
-          <img class="waterfall-img" :src="randomImg()" alt="" />
+          <img class="waterfall-img" :data-src="randomImg()" alt="" />
         </div>
-        <span class="waterfall-header">
-          {{ item }}
-        </span>
+        <span class="waterfall-header"> Footer </span>
       </div>
-      <div
+      <!-- <div
         class="waterfall-header"
         :style="`height: ${randomHeight(
           50,
@@ -47,7 +45,7 @@
         )}px; background: ${randomColor()}`"
       >
         {{ randomColor() }}
-      </div>
+      </div> -->
       <span class="waterfall-header"> Footer </span>
     </div>
   </Waterfall>
@@ -65,8 +63,13 @@ import WfMessage from '@weifengwa/components/message'
 import { ref } from 'vue'
 import Waterfall from './Waterfall.vue'
 
+const waterfallRef = ref<InstanceType<typeof Waterfall>>()
 const openDialog = ref(false)
 const direction = ref(false)
+const data = ref([])
+const url = 'https://picsum.photos/v2/list'
+const page = ref(1)
+const limit = ref(10)
 
 const imgs = [
   'https://pic3.zhimg.com/50/v2-75c2db14f9cf8497cbde48b2a64e6f3c_hd.jpg?source=1940ef5c',
@@ -102,6 +105,17 @@ function randomHeight(n: number, m: number) {
 function randomColor() {
   return '#' + Math.random().toString(16).substring(2, 8).padEnd(6, '0')
 }
+
+const getData = () => {
+  fetch(`${url}?page=${page.value}&limit=${limit.value}`)
+    .then(res => res.json())
+    .then(res => {
+      data.value = res
+      waterfallRef.value?.initView()
+    })
+}
+
+getData()
 </script>
 
 <style>
@@ -109,6 +123,11 @@ function randomColor() {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+#app {
+  width: 100dvw;
+  height: 100dvh;
 }
 
 .waterfall-item {

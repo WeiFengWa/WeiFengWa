@@ -14,14 +14,14 @@
       @mouseenter="clearTimer"
       @mouseleave="startTimer"
     >
-      <wf-icon v-show="icon" :class="bem.e('icon')" :name="typeIcon" />
+      <wf-icon v-show="typeIcon" :class="bem.e('icon')" :name="typeIcon" />
       <div :class="bem.e('content')">
         <h2 v-if="notification && title" :class="bem.e('title')">
           {{ title }}
         </h2>
-        <span :class="bem.e('message')">
-          {{ message }}
-        </span>
+        <p :class="bem.e('message')">
+          {{ typeIcon }}
+        </p>
       </div>
       <wf-icon
         :class="bem.e('close')"

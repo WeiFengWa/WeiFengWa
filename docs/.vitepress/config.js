@@ -35,6 +35,7 @@ module.exports = {
           { text: '开关', link: '/component/switch' },
           { text: '弹窗', link: '/component/dialog' },
           { text: '消息', link: '/component/message' },
+          { text: '瀑布流', link: '/component/waterfall' },
         ]
       }
     ],

@@ -17,7 +17,7 @@
       <div
         ref="thumbRef"
         :class="bem.e('thumb')"
-        :style="thumbStyle"
+        :style="buildThumbStyle"
         @mousedown="clickThumbHandler"
       ></div>
     </div>
@@ -28,7 +28,7 @@
 import { createNameSpace } from '@weifengwa/utils/bem'
 import { scrollEmits, scrollProps } from './scroll'
 import '@weifengwa/styles/src/scroll.css'
-import { computed, reactive, ref, watch } from 'vue'
+import { computed, onMounted, reactive, ref, watch } from 'vue'
 
 defineOptions({
   name: 'WfScroll'
@@ -44,13 +44,6 @@ const trackRef = ref<HTMLDivElement>()
 const thumbRef = ref<HTMLDivElement>()
 const thumbStyle = ref()
 const contentWH = ref(0)
-
-watch(
-  () => contentWH.value,
-  v => {
-    thumbStyle.value = buildThumbStyle()
-  }
-)
 
 const status = reactive({
   top: 0,
@@ -71,7 +64,7 @@ const scrollStyle = computed(() => {
   }
 })
 
-const buildThumbStyle = () => {
+const buildThumbStyle = computed(() => {
   if (props.horizontal)
     return {
       width: thumbWidth() + 'px'
@@ -79,18 +72,18 @@ const buildThumbStyle = () => {
   return {
     height: thumbHeight() + 'px'
   }
-}
+})
 
 const thumbHeight = () => {
   if (!containerRef.value || !contentRef.value) return 0
-  if (contentWH.value === 0 && contentRef.value.clientHeight === 0) {
-    contentWH.value = containerRef.value.clientHeight
-    contentRef.value.style.height = contentWH.value + 'px'
-  } else if (contentWH.value === 0) {
-    contentWH.value = contentRef.value.clientHeight
-  } else {
-    contentRef.value.style.height = contentWH.value + 'px'
-  }
+  // if (contentWH.value === 0 && contentRef.value.clientHeight === 0) {
+  //   contentWH.value = containerRef.value.clientHeight
+  //   contentRef.value.style.height = contentWH.value + 'px'
+  // } else if (contentWH.value === 0) {
+  //   contentWH.value = contentRef.value.clientHeight
+  // } else {
+  //   contentRef.value.style.height = contentWH.value + 'px'
+  // }
   if (containerRef.value.clientHeight > contentRef.value.clientHeight) return 0
   const h =
     props.min ||
@@ -100,14 +93,14 @@ const thumbHeight = () => {
 
 const thumbWidth = () => {
   if (!containerRef.value || !contentRef.value) return 0
-  if (contentWH.value === 0 && contentRef.value.clientWidth === 0) {
-    contentWH.value = containerRef.value.clientWidth
-    contentRef.value.style.width = contentWH.value + 'px'
-  } else if (contentWH.value === 0) {
-    contentWH.value = contentRef.value.clientWidth
-  } else {
-    contentRef.value.style.width = contentWH.value + 'px'
-  }
+  // if (contentWH.value === 0 && contentRef.value.clientWidth === 0) {
+  //   contentWH.value = containerRef.value.clientWidth
+  //   contentRef.value.style.width = contentWH.value + 'px'
+  // } else if (contentWH.value === 0) {
+  //   contentWH.value = contentRef.value.clientWidth
+  // } else {
+  //   contentRef.value.style.width = contentWH.value + 'px'
+  // }
   if (containerRef.value.clientWidth > contentRef.value.clientWidth) return 0
   const w =
     props.min ||
@@ -217,6 +210,37 @@ const mouseUpHandler = () => {
   document.removeEventListener('mouseup', mouseUpHandler)
   document.onselectstart = null
 }
+
+// watch(
+//   () => contentWH.value,
+//   () => {
+//     thumbStyle.value = buildThumbStyle()
+//   }
+// )
+
+// watch(
+//   () => props.horizontal,
+//   () => {
+//     if (props.horizontal) {
+//       contentRef.value!.style.width = 'auto'
+//       // contentRef.value!.style.overflowX = 'auto'
+//     } else {
+//       contentRef.value!.style.height = 'auto'
+//       // contentRef.value!.style.overflowY = 'auto'
+//     }
+//     contentWH.value =
+//       (props.horizontal
+//         ? contentRef.value?.clientWidth
+//         : contentRef.value?.clientHeight) || 0
+//   }
+// )
+
+// onMounted(() => {
+//   contentWH.value =
+//     (props.horizontal
+//       ? contentRef.value?.clientWidth
+//       : contentRef.value?.clientHeight) || 0
+// })
 
 defineExpose({
   scrollTo,

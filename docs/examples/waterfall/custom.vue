@@ -1,75 +1,37 @@
 <template>
-  <!-- <wf-space align="center" vertical>
-    <wf-switch
-      v-model="direction"
-      checked-label="垂直"
-      unchecked-label="水平"
-      show-label
-    />
-    <wf-scroll :horizontal="direction" height="200px">
-      <wf-space align="center" :vertical="!direction">
-        <p class="font-bold">测试效果</p>
-        <wf-icon name="iconamoon:certificate-badge-duotone" />
-        <wf-icon
-          name="iconamoon:certificate-badge-duotone"
-          :size="34"
-          color="skyblue"
-        />
-        <wf-icon name="iconamoon:check-circle-1" />
-        <wf-icon name="iconamoon:check-circle-1" :size="34" color="skyblue" />
-        <wf-icon>✌️</wf-icon>
-        <wf-button type="success" loading>按钮</wf-button>
-        <wf-button type="primary">按钮</wf-button>
-        <wf-switch v-model="openDialog" />
-      </wf-space>
-    </wf-scroll>
-  </wf-space> -->
-  <Waterfall ref="waterfallRef">
-    <div v-for="(item, index) in 30" :key="item" class="waterfall-item">
+  <wf-waterfall
+    id="custom-waterfall"
+    ref="waterfallRef"
+    v-model="data"
+    :column="2"
+    :gap="14"
+    loading-label="拼命加载中..."
+    no-more-label="没有更多了"
+    :has-more="hasMore"
+    @load-more="loadMore"
+  >
+    <div v-for="(item, index) in data" :key="item" class="waterfall-item">
       <span class="waterfall-header">{{ index }}</span>
       <div style="display: flex; flex-direction: column">
         <div>
-          <!-- <img
-            class="waterfall-img"
-            :data-src="`https://api.usuuu.com/img/random?${item}`"
-          /> -->
           <img class="waterfall-img" :data-src="randomImg()" alt="" />
         </div>
-        <!-- <span class="waterfall-header"> Footer </span> -->
       </div>
-      <!-- <div
-        class="waterfall-header"
-        :style="`height: ${randomHeight(
-          50,
-          100
-        )}px; background: ${randomColor()}`"
-      >
-        {{ randomColor() }}
-      </div> -->
       <span class="waterfall-header"> Footer </span>
     </div>
-  </Waterfall>
-  <!-- <wf-dialog
-    v-model="openDialog"
-    title="标题"
-    @open="WfMessage.success('open')"
-    @close="WfMessage.warning('close')"
-  >
-    <p>内容</p>
-  </wf-dialog> -->
+  </wf-waterfall>
 </template>
-<script setup lang="ts">
-import WfMessage from '@weifengwa/components/message'
-import { onMounted, ref } from 'vue'
-import Waterfall from './Waterfall.vue'
 
-const waterfallRef = ref<InstanceType<typeof Waterfall>>()
-const openDialog = ref(false)
-const direction = ref(false)
-const data = ref([])
+<script setup lang="ts">
+import WfWaterfall from '@weifengwa/components/waterfall'
+import { ref } from 'vue'
+
+const waterfallRef = ref<InstanceType<typeof WfWaterfall>>()
+const data = ref<any[]>([])
 const url = 'https://picsum.photos/v2/list'
 const page = ref(1)
-const limit = ref(10)
+const limit = ref(6)
+const hasMore = ref(true)
 
 const imgs = [
   'https://pic3.zhimg.com/50/v2-75c2db14f9cf8497cbde48b2a64e6f3c_hd.jpg?source=1940ef5c',
@@ -94,44 +56,27 @@ const randomImg = () => {
   return imgs[Math.floor(Math.random() * imgs.length)]
 }
 
-function randomHeight(n: number, m: number) {
-  let result = Math.random() * (m + 1 - n) + n
-  while (result > m) {
-    result = Math.random() * (m + 1 - n) + n
-  }
-  return parseInt(result.toString())
-}
-
-function randomColor() {
-  return '#' + Math.random().toString(16).substring(2, 8).padEnd(6, '0')
-}
-
-onMounted(() => {
-  waterfallRef.value?.initView()
-})
 const getData = () => {
   fetch(`${url}?page=${page.value}&limit=${limit.value}`)
     .then(res => res.json())
     .then(res => {
-      data.value = res
+      data.value = [...data.value, ...res]
+      // console.log('加载完成')
     })
 }
-
 getData()
+
+const loadMore = () => {
+  if (page.value >= 3) {
+    hasMore.value = false
+    return
+  }
+  page.value++
+  getData()
+}
 </script>
 
-<style>
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-#app {
-  width: 100dvw;
-  height: 100dvh;
-}
-
+<style scoped>
 .waterfall-item {
   display: flex;
   flex-direction: column;

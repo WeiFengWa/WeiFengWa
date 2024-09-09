@@ -14,6 +14,12 @@ defineOptions({
 })
 
 const bem = createNameSpace('collapse-transition')
+const emit = defineEmits([
+  'before-enter',
+  'after-enter',
+  'before-leave',
+  'after-leave'
+])
 
 const reset = (el: RendererElement) => {
   el.style.maxHeight = ''
@@ -69,6 +75,7 @@ const on = {
 
     el.style.maxHeight = `${el.scrollHeight}px`
     el.style.overflow = 'hidden'
+    emit('before-leave')
   },
 
   leave(el: RendererElement) {

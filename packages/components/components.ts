@@ -6,6 +6,7 @@ import { WfScroll } from './scroll'
 import { WfSwitch } from './switch'
 import { WfDialog } from './dialog'
 import { WfCollapseTransition } from './collapse-transition'
+import { WfWaterfall } from './waterfall'
 
 export default [
   WfIcon,
@@ -15,7 +16,8 @@ export default [
   WfScroll,
   WfSwitch,
   WfDialog,
-  WfCollapseTransition
+  WfCollapseTransition,
+  WfWaterfall
 ] as Plugin[]
 
 // export {

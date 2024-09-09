@@ -6,8 +6,8 @@
     </wf-space>
     <wf-scroll :horizontal="horizontal">
       <div style="height: 300px; width: 200px; background: red">div1</div>
-      <div style="height: 300px; width: 300px; background: blue">div2</div>
-      <div style="height: 300px; width: 500px; background: red">div1</div>
+      <div style="height: 100px; width: 300px; background: blue">div2</div>
+      <div style="height: 140px; width: 500px; background: red">div1</div>
     </wf-scroll>
   </wf-space>
 </template>

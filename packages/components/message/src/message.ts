@@ -18,7 +18,7 @@ export const definePropType = <T>(val: any): PropType<T> => val
 
 export const messageDefaults = {
   duration: 3000,
-  icon: 'iconamoon:check-circle-1',
+  icon: '',
   id: '',
   message: '',
   onClose: undefined,

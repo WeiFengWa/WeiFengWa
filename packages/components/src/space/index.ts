@@ -1,11 +1,11 @@
 import { withInstall } from '@weifengwa/utils/install'
-import _Space from './src/space.vue'
+import _Space from './space.vue'
 
 export const WfSpace = withInstall(_Space)
 
 export default WfSpace
 
-export * from './src/space'
+export * from './space'
 
 declare module 'vue' {
   interface GlobalComponents {

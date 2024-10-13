@@ -1,11 +1,11 @@
-import _Scroll from './src/scroll.vue'
+import _Scroll from './scroll.vue'
 import { withInstall } from '@weifengwa/utils/install'
 
 export const WfScroll = withInstall(_Scroll)
 
 export default WfScroll
 
-export * from './src/scroll'
+export * from './scroll'
 
 declare module 'vue' {
   interface GlobalComponents {

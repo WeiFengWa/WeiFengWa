@@ -15,7 +15,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'index.ts'),
       name: 'WeiFengWa',
-      formats: ['es']
+      formats: ['es', 'umd', 'cjs']
     },
     rollupOptions: {
       //忽略打包vue文件
@@ -54,8 +54,9 @@ export default defineConfig({
     vue(),
     dts({
       include: ['./**/*'],
-      outDir: ['../dist/es/src1', '../dist/lib/src1']
-      // entryRoot: './src',
+      entryRoot: 'src',
+      // packages/components
+      outDir: ['../dist/es/src', '../dist/lib/src']
       // outputDir: ['../dist/es/src', '../easyest/lib/src'],
       //指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
       // tsConfigFilePath: '../../tsconfig.json'

@@ -1,4 +1,4 @@
-import { WfMessage } from '@weifengwa/components/message'
+import { WfMessage } from '@weifengwa/components/src/message'
 import type { Plugin } from 'vue'
 // import WfMessage from './message'
 

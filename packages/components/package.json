@@ -10,14 +10,8 @@
   "module": "./index.esm.js",
   "types": "./types/components/index.d.ts",
   "style": "./theme/style.css",
-  "exports": {
-    ".": {
-      "import": "./index.esm.js",
-      "require": "./index.umd.js"
-    }
-  },
   "scripts": {
-    "test": "vite build"
+    "build": "vite build"
   },
   "repository": {
     "type": "git",

@@ -1,4 +1,4 @@
-import CollapseTransition from './src/collapse-transition.vue'
+import CollapseTransition from './collapse-transition.vue'
 import type { App } from 'vue'
 import type { SFCWithInstall } from '@weifengwa/utils/install'
 

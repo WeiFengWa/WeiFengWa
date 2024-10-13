@@ -1,12 +1,12 @@
 import { Plugin } from 'vue'
-import { WfIcon } from './icon'
-import { WfButton, WfButtonGroup } from './button'
-import { WfSpace } from './space'
-import { WfScroll } from './scroll'
-import { WfSwitch } from './switch'
-import { WfDialog } from './dialog'
-import { WfCollapseTransition } from './collapse-transition'
-import { WfWaterfall } from './waterfall'
+import { WfIcon } from './src/icon'
+import { WfButton, WfButtonGroup } from './src/button'
+import { WfSpace } from './src/space'
+import { WfScroll } from './src/scroll'
+import { WfSwitch } from './src/switch'
+import { WfDialog } from './src/dialog'
+import { WfCollapseTransition } from './src/collapse-transition'
+import { WfWaterfall } from './src/waterfall'
 
 export default [
   WfIcon,

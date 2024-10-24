@@ -1,0 +1,31 @@
+.wf-radio-group {
+  @apply flex items-center;
+
+  &__inner {
+    @apply inline-flex items-center gap-[7px];
+  }
+
+  &.is-button &__inner {
+    @apply gap-0 border rounded-md overflow-hidden;
+  }
+
+  &.is-button .wf-radio {
+    @apply px-4 py-1;
+  }
+
+  &.is-button .wf-radio.is-selected {
+    @apply bg-[var(--primary)];
+  }
+
+  &.is-button .wf-radio .wf-radio__inner {
+    @apply hidden;
+  }
+
+  &.is-button .wf-radio.is-selected .wf-radio__label {
+    @apply text-white;
+  }
+
+  &.is-button .wf-radio ~ .wf-radio {
+    @apply border-l;
+  }
+}

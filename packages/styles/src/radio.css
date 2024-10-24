@@ -1,0 +1,39 @@
+.wf-radio {
+  @apply inline-flex items-center gap-[7px] cursor-pointer;
+
+  &__input {
+    @apply hidden;
+  }
+
+  &__inner {
+    @apply duration-300 border-2 border-[var(--dark-fill)] rounded-full w-4 h-4 flex items-center justify-center;
+  }
+
+  &__inner:hover {
+    @apply border-[var(--primary)];
+  }
+
+  &__inner::after {
+    @apply content-[''] bg-white w-1.5 h-1.5 rounded-full;
+  }
+
+  &__input:checked ~ &__inner {
+    @apply bg-blue-500 border-blue-500;
+
+    &::after {
+      @apply content-[''] bg-white w-2 h-2 rounded-full;
+    }
+  }
+
+  &__label {
+    @apply text-gray-400;
+  }
+
+  &.is-selected &__inner {
+    @apply bg-[var(--primary)] border;
+  }
+
+  &.is-selected &__label {
+    @apply text-black;
+  }
+}

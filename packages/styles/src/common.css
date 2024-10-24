@@ -35,7 +35,7 @@
   --disabled-text: #c0c4cc;
 
   --darker-border: #cdd0d6;
-  --dark-border: #d4d7de;
+  --dark-border: #d5d7da;
   --base-border: #dcdfe6;
   --light-border: #e4e7ed;
   --lighter-border: #ebeef5;
@@ -83,4 +83,9 @@
 }
 .animate-spin {
   animation: spin 1s linear infinite;
+}
+
+.wf-loading-mask {
+  @apply absolute top-0 left-0 right-0 bottom-0 z-10 
+  flex items-center justify-center bg-white/80 text-sm text-gray-500;
 }

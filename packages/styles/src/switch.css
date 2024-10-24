@@ -2,7 +2,7 @@
   --checked-color: var(--primary);
   --unchecked-color: var(--info-light-5);
   --dot-color: var(--base-white);
-  @apply inline-flex items-center gap-3.5;
+  @apply inline-flex items-center gap-3.5 relative;
 
   &__button {
     @apply p-[2px] relative inline-flex items-center w-10 h-5 bg-[var(--unchecked-color)] duration-300 rounded-full;
@@ -11,6 +11,14 @@
   &__dot {
     @apply absolute inline-block w-4 h-4 rounded-full
      bg-[var(--dot-color)] animate-[.4s_forwards_ease-in];
+  }
+
+  &__input {
+    @apply h-0 w-0 opacity-0 absolute;
+  }
+
+  &__label {
+    @apply text-sm font-semibold;
   }
 
   &.is-checked > &__button {
@@ -25,6 +33,7 @@
     @apply cursor-not-allowed opacity-80;
   }
 
+  &.is-showLabelRight,
   &.is-showLabel {
     @apply flex items-center justify-between;
   }

@@ -1,4 +1,11 @@
 @import './common.css';
-@import './icon.css';
-@import './button.css';
 @import './button-group.css';
+@import './button.css';
+@import './collapse-transition.css';
+@import './dialog.css';
+@import './icon.css';
+@import './message.css';
+@import './scroll.css';
+@import './space.css';
+@import './switch.css';
+@import './waterfall.css';

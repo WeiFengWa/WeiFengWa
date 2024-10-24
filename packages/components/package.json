@@ -3,15 +3,12 @@
   "type": "module",
   "version": "1.0.0",
   "description": "Vue3 组件库",
-  "files": [
-    "dist"
-  ],
-  "main": "./index.umd.js",
-  "module": "./index.esm.js",
-  "types": "./types/components/index.d.ts",
-  "style": "./theme/style.css",
+  "main": "lib/components/index.cjs",
+  "module": "es/components/index.mjs",
+  "types": "es/components/index.d.ts",
+  "style": "styles/index.css",
   "scripts": {
-    "build": "vite build"
+    "build": "gulp"
   },
   "repository": {
     "type": "git",

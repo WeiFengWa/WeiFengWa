@@ -1,11 +1,12 @@
 {
   "name": "weifengwa",
-  "version": "1.0.21",
+  "version": "1.0.39",
   "description": "Vue3 组件库",
-  "main": "./index.js",
-  "module": "./index.esm.js",
-  "types": "./types/components/index.d.ts",
-  "style": "./theme/index.css",
+  "type": "module",
+  "main": "lib/components/index.cjs",
+  "module": "es/components/index.mjs",
+  "types": "es/components/index.d.ts",
+  "style": "styles/index.css",
   "scripts": {
     "release": "release-it"
   },

@@ -8,6 +8,15 @@
     show-label
     @change="handleChange"
   />
+  <wf-switch
+    v-model="value"
+    checked-value="1"
+    unchecked-value="0"
+    checked-label="开"
+    unchecked-label="关"
+    show-label-right
+    @change="handleChange"
+  />
 </template>
 
 <script setup lang="ts">

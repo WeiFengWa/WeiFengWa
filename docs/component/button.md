@@ -78,22 +78,3 @@ button/group
 | 名称    | 说明     |
 | ------- | -------- |
 | default | 默认内容 |
-
-<script setup lang="ts">
-import { ref } from 'vue'
-const loading = ref(false)
-
-
-function startLoading() {
-  loading.value = true
-  console.log('开始加载')
-  setTimeout(() => {
-    loading.value = false
-    console.log('加载结束')
-  }, 1500)
-}
-
-const test = () => {
-  console.log('test')
-}
-</script>

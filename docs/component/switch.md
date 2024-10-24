@@ -24,6 +24,8 @@ switch/label
 
 | 名称           | 类型                        | 说明             | 默认  |
 | -------------- | --------------------------- | ---------------- | ----- |
+| v-model        | string \| number            | 绑定值           |       |
+| name           | string                      | 名字             |       |
 | disabled       | boolean                     | 是否禁用         | false |
 | checkedColor   | string                      | 选中时背景颜色   |       |
 | uncheckedColor | string                      | 未选中时背景颜色 |       |

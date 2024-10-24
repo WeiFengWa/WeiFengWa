@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import WfWaterfall from '@weifengwa/components/waterfall'
+import WfWaterfall from '@weifengwa/components/src/waterfall'
 import { ref } from 'vue'
 
 const waterfallRef = ref<InstanceType<typeof WfWaterfall>>()

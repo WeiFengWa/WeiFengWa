@@ -32,10 +32,18 @@ module.exports = {
           { text: '按钮', link: '/component/button' },
           { text: '间距', link: '/component/space' },
           { text: '滚动条', link: '/component/scroll' },
-          { text: '开关', link: '/component/switch' },
           { text: '弹窗', link: '/component/dialog' },
           { text: '消息', link: '/component/message' },
           { text: '瀑布流', link: '/component/waterfall' },
+        ]
+      },
+      {
+        text: '表单',
+        items: [
+          { text: '输入框', link: '/component/input' },
+          { text: '开关', link: '/component/switch' },
+          { text: '单选框', link: '/component/radio' },
+          { text: '多选框', link: '/component/checkbox' },
         ]
       }
     ],

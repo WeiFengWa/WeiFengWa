@@ -1,0 +1,31 @@
+.wf-checkbox-group {
+  @apply flex items-center;
+
+  &__inner {
+    @apply inline-flex items-center gap-[7px];
+  }
+
+  &.is-button &__inner {
+    @apply gap-0 border rounded-md overflow-hidden;
+  }
+
+  &.is-button .wf-checkbox {
+    @apply px-4 py-1;
+  }
+
+  &.is-button .wf-checkbox.is-selected {
+    @apply bg-[var(--primary)];
+  }
+
+  &.is-button .wf-checkbox .wf-checkbox__inner {
+    @apply hidden;
+  }
+
+  &.is-button .wf-checkbox.is-selected .wf-checkbox__label {
+    @apply text-white;
+  }
+
+  &.is-button .wf-checkbox ~ .wf-checkbox {
+    @apply border-l;
+  }
+}

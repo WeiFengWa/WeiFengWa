@@ -7,7 +7,7 @@ function WeiFengWaResolver() {
         return {
           name: 'wf' + partialName,
           from: `weifengwa`,
-          sideEffects: `weifengwa/theme/${partialName}.css`
+          sideEffects: `weifengwa/styles/${partialName}.css`
         }
       }
     }

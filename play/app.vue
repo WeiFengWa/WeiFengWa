@@ -1,5 +1,6 @@
 <template>
-  <!-- <wf-space align="center" vertical>
+  <wf-switch v-model="loading" />
+  <wf-space v-loading="loading" align="center" vertical>
     <wf-switch
       v-model="direction"
       checked-label="垂直"
@@ -23,43 +24,22 @@
         <wf-switch v-model="openDialog" />
       </wf-space>
     </wf-scroll>
-  </wf-space> -->
-  <Waterfall ref="waterfallRef">
+  </wf-space>
+  <wf-dialog v-model="openDialog" title="标题" width="500px"></wf-dialog>
+  <!-- <Waterfall ref="waterfallRef">
     <div v-for="(item, index) in 30" :key="item" class="waterfall-item">
       <span class="waterfall-header">{{ index }}</span>
       <div style="display: flex; flex-direction: column">
         <div>
-          <!-- <img
-            class="waterfall-img"
-            :data-src="`https://api.usuuu.com/img/random?${item}`"
-          /> -->
           <img class="waterfall-img" :data-src="randomImg()" alt="" />
         </div>
-        <!-- <span class="waterfall-header"> Footer </span> -->
       </div>
-      <!-- <div
-        class="waterfall-header"
-        :style="`height: ${randomHeight(
-          50,
-          100
-        )}px; background: ${randomColor()}`"
-      >
-        {{ randomColor() }}
-      </div> -->
       <span class="waterfall-header"> Footer </span>
     </div>
-  </Waterfall>
-  <!-- <wf-dialog
-    v-model="openDialog"
-    title="标题"
-    @open="WfMessage.success('open')"
-    @close="WfMessage.warning('close')"
-  >
-    <p>内容</p>
-  </wf-dialog> -->
+  </Waterfall> -->
 </template>
 <script setup lang="ts">
-import WfMessage from '@weifengwa/components/message'
+import WfMessage from '@weifengwa/components/src/message'
 import { onMounted, ref } from 'vue'
 import Waterfall from './Waterfall.vue'
 
@@ -70,6 +50,15 @@ const data = ref([])
 const url = 'https://picsum.photos/v2/list'
 const page = ref(1)
 const limit = ref(10)
+
+const loading = ref(false)
+
+setTimeout(() => {
+  loading.value = true
+  setTimeout(() => {
+    loading.value = false
+  }, 2000)
+}, 1000)
 
 const imgs = [
   'https://pic3.zhimg.com/50/v2-75c2db14f9cf8497cbde48b2a64e6f3c_hd.jpg?source=1940ef5c',

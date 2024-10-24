@@ -1,0 +1,72 @@
+.wf-input {
+  @apply mb-3.5 w-full relative flex border-solid border border-transparent bg-[var(--light-fill)] rounded-md text-sm;
+
+  &:hover {
+    @apply border-gray-200;
+  }
+
+  &__inner-wrapper {
+    @apply w-full h-full flex relative items-center;
+  }
+
+  &__append {
+    @apply overflow-hidden rounded-r-md flex flex-shrink-0;
+  }
+
+  &__prepend {
+    @apply flex overflow-hidden rounded-l-md flex-shrink-0;
+  }
+
+  &__append > button,
+  &__prepend > button {
+    @apply rounded-none;
+  }
+
+  &:hover > &__counter {
+    @apply inline-block;
+  }
+
+  &:hover &__clear {
+    @apply inline-flex;
+  }
+
+  &__inner {
+    @apply min-h-7 py-1 px-2 h-full bg-transparent;
+  }
+
+  &__inner::-ms-reveal {
+    @apply hidden;
+  }
+
+  &__counter {
+    @apply hidden absolute text-xs text-gray-400 -bottom-4 right-1;
+  }
+
+  &__prefix {
+    @apply pl-2 text-gray-400;
+  }
+
+  &__suffix {
+    @apply pr-2 text-gray-400;
+  }
+
+  &__clear {
+    @apply hidden absolute right-1 cursor-pointer text-gray-400;
+  }
+
+  &__password {
+    @apply absolute right-1 cursor-pointer text-gray-400;
+  }
+
+  &.is-disabled {
+    @apply bg-[var(--base-fill)] hover:border-transparent;
+  }
+
+  &.is-disabled > &__inner {
+    @apply cursor-not-allowed;
+  }
+
+  & > .wf-button {
+    @apply rounded-none;
+  }
+}

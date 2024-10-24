@@ -1,5 +1,5 @@
 import _Switch from './switch.vue'
-import { withInstall } from '@weifengwa/utils/install'
+import { withInstall } from '@weifengwa/utils/src/install'
 
 export const WfSwitch = withInstall(_Switch)
 

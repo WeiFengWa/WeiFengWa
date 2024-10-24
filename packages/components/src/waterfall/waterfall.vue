@@ -17,6 +17,7 @@ import { createNameSpace } from '@weifengwa/utils'
 import { ref, watch } from 'vue'
 import { waterfallEmits, waterfallProps } from './waterfall'
 import '@weifengwa/styles/src/waterfall.css'
+import WfButton from '../button'
 
 defineOptions({
   name: 'WfWaterfall'

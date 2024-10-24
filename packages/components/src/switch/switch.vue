@@ -4,7 +4,8 @@
       bem.b(),
       bem.is('checked', open),
       bem.is('disabled', props.disabled),
-      bem.is('showLabel', props.showLabel)
+      bem.is('showLabel', props.showLabel),
+      bem.is('showLabelRight', props.showLabelRight)
     ]"
     :style="switchStyle"
   >
@@ -18,14 +19,19 @@
     >
       <span ref="dotRef" :class="bem.e('dot')"></span>
     </button>
+    <span v-if="props.showLabelRight" :class="bem.e('label')">
+      {{ open ? props.checkedLabel : props.uncheckedLabel }}
+    </span>
+    <input :class="bem.e('input')" :name="name" :value="switchValue" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { createNameSpace } from '@weifengwa/utils/bem'
+import { createNameSpace } from '@weifengwa/utils/src/bem'
 import '@weifengwa/styles/src/switch.css'
 import { computed, ref, watch } from 'vue'
 import { switchEmits, switchProps } from './switch'
+import { isUndefined } from '@weifengwa/utils'
 defineOptions({
   name: 'WfSwitch'
 })
@@ -52,6 +58,13 @@ const handleClick = () => {
   )
   open.value = !open.value
 }
+
+const switchValue = computed(() => {
+  if (isUndefined(props.checkedValue) || isUndefined(props.uncheckedValue)) {
+    return open.value
+  }
+  return open.value ? props.checkedValue : props.uncheckedValue
+})
 
 const playAnimation = () => {
   if (!dotRef.value) return

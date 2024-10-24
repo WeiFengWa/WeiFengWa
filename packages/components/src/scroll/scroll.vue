@@ -25,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-import { createNameSpace } from '@weifengwa/utils/bem'
+import { createNameSpace } from '@weifengwa/utils/src/bem'
 import { scrollEmits, scrollProps } from './scroll'
 import '@weifengwa/styles/src/scroll.css'
 import { computed, onMounted, reactive, ref, watch } from 'vue'

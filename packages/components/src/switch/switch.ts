@@ -1,15 +1,23 @@
 import { ExtractPropTypes } from 'vue'
 
 export const switchProps = {
+  name: String,
   disabled: Boolean,
   checkedColor: String,
   uncheckedColor: String,
   dotColor: String,
-  checkedValue: [String, Number, Boolean],
-  uncheckedValue: [String, Number, Boolean],
+  checkedValue: {
+    type: [String, Number, Boolean],
+    default: true
+  },
+  uncheckedValue: {
+    type: [String, Number, Boolean],
+    default: false
+  },
   checkedLabel: String,
   uncheckedLabel: String,
-  showLabel: Boolean
+  showLabel: Boolean,
+  showLabelRight: Boolean
 }
 
 export const switchEmits = {

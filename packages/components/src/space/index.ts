@@ -1,4 +1,4 @@
-import { withInstall } from '@weifengwa/utils/install'
+import { withInstall } from '@weifengwa/utils/src/install'
 import _Space from './space.vue'
 
 export const WfSpace = withInstall(_Space)

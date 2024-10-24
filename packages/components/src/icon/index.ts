@@ -1,5 +1,5 @@
 import _Icon from './icon.vue'
-import { withInstall } from '@weifengwa/utils/install'
+import { withInstall } from '@weifengwa/utils/src/install'
 
 export const WfIcon = withInstall(_Icon)
 

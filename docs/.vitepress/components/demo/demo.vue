@@ -40,8 +40,8 @@ import exampleVue from './example.vue'
 import sourceCodeVue from './source-code.vue'
 import { useClipboard } from '@vueuse/core'
 import { modules } from '..'
-import WfMessage from '@weifengwa/components/message'
-import WfCollapseTransition from '@weifengwa/components/collapse-transition'
+import WfMessage from '@weifengwa/components/src/message'
+import WfCollapseTransition from '@weifengwa/components/src/collapse-transition'
 
 export interface DemoProps {
   path: string

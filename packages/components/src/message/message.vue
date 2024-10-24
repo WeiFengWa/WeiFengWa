@@ -38,6 +38,7 @@ import { messageEmits, messageProps } from './message'
 import { computed, CSSProperties, onMounted, ref } from 'vue'
 import { getLastOffset, getOffsetOrSpace } from './instance'
 import '@weifengwa/styles/src/message.css'
+import WfIcon from '../icon'
 import { useResizeObserver, useTimeoutFn } from '@vueuse/core'
 import { TypeIconsMap } from '@weifengwa/utils'
 

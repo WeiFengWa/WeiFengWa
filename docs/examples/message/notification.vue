@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { WfMessage } from '@weifengwa/components/message'
+import { WfMessage } from '@weifengwa/components/src/message'
 import { ref } from 'vue'
 
 const count = ref(0)

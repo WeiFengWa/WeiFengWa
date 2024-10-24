@@ -1,4 +1,4 @@
-import { withInstall } from '@weifengwa/utils/install'
+import { withInstall } from '@weifengwa/utils/src/install'
 import _Dialog from './dialog.vue'
 
 export const WfDialog = withInstall(_Dialog)

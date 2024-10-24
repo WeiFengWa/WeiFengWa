@@ -1,5 +1,5 @@
 import _Scroll from './scroll.vue'
-import { withInstall } from '@weifengwa/utils/install'
+import { withInstall } from '@weifengwa/utils/src/install'
 
 export const WfScroll = withInstall(_Scroll)
 

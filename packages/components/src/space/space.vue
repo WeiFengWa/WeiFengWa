@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { createNameSpace } from '@weifengwa/utils/bem'
+import { createNameSpace } from '@weifengwa/utils/src/bem'
 import { spaceProps } from './space'
 import '@weifengwa/styles/src/space.css'
 import { computed } from 'vue'

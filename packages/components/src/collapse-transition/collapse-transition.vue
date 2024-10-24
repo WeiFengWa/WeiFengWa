@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { createNameSpace } from '@weifengwa/utils/bem'
+import { createNameSpace } from '@weifengwa/utils/src/bem'
 import { RendererElement } from 'vue'
 import '@weifengwa/styles/src/collapse-transition.css'
 

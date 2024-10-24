@@ -1,10 +1,7 @@
 import _Button from './button.vue'
-import _ButtonGroup from './button-group.vue'
-import { withInstall } from '@weifengwa/utils/install'
+import { withInstall } from '@weifengwa/utils/src/install'
 
 export const WfButton = withInstall(_Button)
-
-export const WfButtonGroup = withInstall(_ButtonGroup)
 
 export default WfButton
 

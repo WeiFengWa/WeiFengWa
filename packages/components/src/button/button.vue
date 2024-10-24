@@ -40,13 +40,14 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { createNameSpace } from '@weifengwa/utils/bem'
+import { createNameSpace } from '@weifengwa/utils/src/bem'
 import {
   buttonLoadingTypes,
   buttonProps,
   buttonTypes,
   buttonEmits
 } from './button'
+import WfIcon from '../icon'
 import '@weifengwa/styles/src/button.css'
 
 defineOptions({

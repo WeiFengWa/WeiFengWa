@@ -10,7 +10,7 @@ import {
   messageTypes
 } from './message'
 import type { Message, MessageFn, messageType } from './message'
-import { isString } from '@weifengwa/utils/utils'
+import { isString } from '@weifengwa/utils/src/utils'
 
 let seed = 1
 

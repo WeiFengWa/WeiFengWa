@@ -3,9 +3,9 @@
 import type { ExtractPropTypes, PropType } from 'vue'
 
 export const iconProps = {
-    size: [Number, String] as PropType<number | string>,
-    color: String,
-    name: String
+  size: [Number, String] as PropType<number | string>,
+  color: String,
+  name: String
 } as const
 
 export type IconProps = ExtractPropTypes<typeof iconProps>

@@ -22,9 +22,10 @@
 </template>
 
 <script setup lang="ts">
-import { createNameSpace } from '@weifengwa/utils/bem'
+import { createNameSpace } from '@weifengwa/utils/src/bem'
 import { dialogEmits, dialogProps } from './dialog'
 import '@weifengwa/styles/src/dialog.css'
+import WfButton from '../button'
 import { watch } from 'vue'
 
 defineOptions({
